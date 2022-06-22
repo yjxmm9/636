@@ -9,12 +9,18 @@
 
 
 标志：六和塔、桥
+
+
 ![Image text](https://github.com/yjxmm9/636/blob/main/Reference%20Pic/image-20220621213140749.png)
+
 
 
 ![Image text](https://github.com/yjxmm9/636/blob/main/Reference%20Pic/image-20220621213127421.png)
 
-![Image text(https://github.com/yjxmm9/636/blob/main/Reference%20Pic/image-20220621213127421.png)](https://github.com/yjxmm9/636/blob/main/Reference%20Pic/image-20220621213254346.png)
+
+
+![Image text](https://github.com/yjxmm9/636/blob/main/Reference%20Pic/image-20220621213254346.png)
+
 
 船：古风龙舟
 
@@ -30,11 +36,11 @@
 
 标志：战壕，炮台，瞭望塔，铁路桥，雕像
 
-![image-20220621213317341](Reference Pic\image-20220621213317341.png)](https://github.com/yjxmm9/636/blob/main/Reference%20Pic/image-20220621213317341.png)
+![Image text](https://github.com/yjxmm9/636/blob/main/Reference%20Pic/image-20220621213317341.png)
 
 
 
-![image-20220621213326515](Reference Pic\image-20220621213326515.png)](https://github.com/yjxmm9/636/blob/main/Reference%20Pic/image-20220621213326515.png)
+![Image text](https://github.com/yjxmm9/636/blob/main/Reference%20Pic/image-20220621213326515.png)
 
 
 
@@ -50,7 +56,7 @@
 
 标志：大裤衩，现代建筑，鸟巢，水立方等
 
-![image-20220621214431663](Reference Pic\image-20220621214431663.png)](https://github.com/yjxmm9/636/blob/main/Reference%20Pic/image-20220621214431663.png)
+![Image text](https://github.com/yjxmm9/636/blob/main/Reference%20Pic/image-20220621214431663.png)
 
 船：快艇
 
