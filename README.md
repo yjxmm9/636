@@ -6,15 +6,15 @@
 
 风格：古代
 
-![image-20220621213223391](C:\Users\qingl\AppData\Roaming\Typora\typora-user-images\image-20220621213223391.png)
+![image-20220621213223391](C:\Users\qingl\Documents\GitHub\636\Reference Pic\image-20220621213223391.png)
 
 标志：六和塔、桥
 
-![image-20220621213127421](C:\Users\qingl\AppData\Roaming\Typora\typora-user-images\image-20220621213127421.png)
+![image-20220621213127421](C:\Users\qingl\Documents\GitHub\636\Reference Pic\image-20220621213127421.png)
 
-![image-20220621213140749](C:\Users\qingl\AppData\Roaming\Typora\typora-user-images\image-20220621213140749.png)
+![image-20220621213140749](C:\Users\qingl\Documents\GitHub\636\Reference Pic\image-20220621213140749.png)
 
-![image-20220621213254346](C:\Users\qingl\AppData\Roaming\Typora\typora-user-images\image-20220621213254346.png)
+![image-20220621213254346](C:\Users\qingl\Documents\GitHub\636\Reference Pic\image-20220621213254346.png)
 
 船：古风龙舟
 
@@ -30,11 +30,11 @@
 
 标志：战壕，炮台，瞭望塔，铁路桥，雕像
 
-![image-20220621213317341](C:\Users\qingl\AppData\Roaming\Typora\typora-user-images\image-20220621213317341.png)
+![image-20220621213317341](C:\Users\qingl\Documents\GitHub\636\Reference Pic\image-20220621213317341.png)
 
 
 
-![image-20220621213326515](C:\Users\qingl\AppData\Roaming\Typora\typora-user-images\image-20220621213326515.png)
+![image-20220621213326515](C:\Users\qingl\Documents\GitHub\636\Reference Pic\image-20220621213326515.png)
 
 
 
@@ -50,7 +50,7 @@
 
 标志：大裤衩，现代建筑，鸟巢，水立方等
 
-![image-20220621214431663](C:\Users\qingl\AppData\Roaming\Typora\typora-user-images\image-20220621214431663.png)
+![image-20220621214431663](C:\Users\qingl\Documents\GitHub\636\Reference Pic\image-20220621214431663.png)
 
 船：快艇
 
