@@ -64,11 +64,11 @@
 
 # 运动系统
 
-左右移动：三条固定线路
+左右移动：可以自由左右移动
 
 上下移动：跳，蹲
 
-
+运动系统实现参考：https://www.bilibili.com/video/BV1A4411L77W?spm_id_from=333.337.search-card.all.click&vd_source=e094efdd3063cf10d20b43f659f855a6
 
 
 
