@@ -6,17 +6,16 @@ using UnityEngine;
 
 public class CameraMove : MonoBehaviour
 {
-
-    private int speed = 20;
+    public GameObject TestBoat;
     // Start is called before the first frame update
     void Start()
     {
-        
+
     }
 
     // Update is called once per frame
     void FixedUpdate()
     {
-        transform.Translate(0, 0, speed * Time.deltaTime, Space.World);
+        this.transform.position = new Vector3(0, 0, TestBoat.transform.position.z);
     }
 }
