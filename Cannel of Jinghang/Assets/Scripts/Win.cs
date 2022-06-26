@@ -19,23 +19,21 @@ public class Win : MonoBehaviour
     {
         GameObject canvas = GameObject.Find("Canvas");
         canvas.transform.Find("Panel").gameObject.SetActive(true);
-        StartCoroutine(Re(1));
     }
 
-    IEnumerator Re(int Seconds)
+    private void OnTriggerExit(Collider other)
     {
-        yield return new WaitForSeconds(Seconds);
         Rewind();
         GameObject canvas = GameObject.Find("Canvas");
         canvas.transform.Find("Panel").gameObject.SetActive(false);
-        yield break;
     }
+
 
     private void Rewind()
     {
         GameObject testBoat = GameObject.Find("TestBoat");
         testBoat.transform.position = new Vector3(testBoat.transform.position.x, 0, 0);
-        testBoat.GetComponent<TestBoatController>().speed += 1;
+        testBoat.GetComponent<TestBoatController>().speed += 2;
     }
     
 
