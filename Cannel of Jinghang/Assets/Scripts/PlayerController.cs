@@ -7,29 +7,35 @@ public class PlayerController : MonoBehaviour
     
     public float speed;
     public float turnspeed;
-    public float jumpForce = 10;
-    private float velocity;
-    private bool isGrounded;
-    public Rigidbody rb;
-    
+    private Rigidbody rb;
+    public Vector3 jump;
+    public float jumpForce = 2f;
+    public bool isGrounded;
+
 
 
     // Start is called before the first frame update
     void Start()
     {
-        
+        rb = this.GetComponent<Rigidbody>();
+        jump = new Vector3(0.0f, 1f, 0.0f);
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+
+            rb.AddForce(jump * jumpForce, ForceMode.Impulse);
+            isGrounded = false;
+        }
     }
 
-    private void OnCollisionStay()
-    {
+    void OnCollisionStay(){
         isGrounded = true;
     }
+
 
     private void FixedUpdate()
     {
@@ -37,14 +43,9 @@ public class PlayerController : MonoBehaviour
         float horizontal = Input.GetAxis("Horizontal");
         transform.Translate(horizontal * speed * Time.fixedDeltaTime, 0, speed * Time.fixedDeltaTime);//向前移动
         Rotating(horizontal);//转向方法
+        
 
-        if (Input.GetKeyDown(KeyCode.Space) && isGrounded)
-        {
-            velocity = jumpForce;
-            isGrounded = false;
 
-        }
-        transform.Translate(new Vector3(0, velocity, 0) * Time.fixedDeltaTime);
     }
 
     private void Rotating(float hor)//转向方法

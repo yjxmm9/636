@@ -1294,27 +1294,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 2309614257140363842, guid: 4e5821648dde8bc43aa2690d9ce85067, type: 3}
       propertyPath: m_Constraints
-      value: 82
-      objectReference: {fileID: 0}
-    - target: {fileID: 2309614257140363842, guid: 4e5821648dde8bc43aa2690d9ce85067, type: 3}
-      propertyPath: m_IsKinematic
-      value: 0
+      value: 90
       objectReference: {fileID: 0}
     - target: {fileID: 2309614257140363846, guid: 4e5821648dde8bc43aa2690d9ce85067, type: 3}
       propertyPath: m_RootOrder
       value: 10
-      objectReference: {fileID: 0}
-    - target: {fileID: 2309614257140363846, guid: 4e5821648dde8bc43aa2690d9ce85067, type: 3}
-      propertyPath: m_LocalScale.x
-      value: 0.77372044
-      objectReference: {fileID: 0}
-    - target: {fileID: 2309614257140363846, guid: 4e5821648dde8bc43aa2690d9ce85067, type: 3}
-      propertyPath: m_LocalScale.y
-      value: 2.2112172
-      objectReference: {fileID: 0}
-    - target: {fileID: 2309614257140363846, guid: 4e5821648dde8bc43aa2690d9ce85067, type: 3}
-      propertyPath: m_LocalScale.z
-      value: 0.5465166
       objectReference: {fileID: 0}
     - target: {fileID: 2309614257140363846, guid: 4e5821648dde8bc43aa2690d9ce85067, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1360,20 +1344,7 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
-    - target: {fileID: 2776797063726209535, guid: 4e5821648dde8bc43aa2690d9ce85067, type: 3}
-      propertyPath: testBoat
-      value: 
-      objectReference: {fileID: 729610041}
-    - target: {fileID: 2776797063726209535, guid: 4e5821648dde8bc43aa2690d9ce85067, type: 3}
-      propertyPath: m_Enabled
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2776797063726209535, guid: 4e5821648dde8bc43aa2690d9ce85067, type: 3}
-      propertyPath: jumpAmount
-      value: 7
-      objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 1791839265106220141, guid: 4e5821648dde8bc43aa2690d9ce85067, type: 3}
+    m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4e5821648dde8bc43aa2690d9ce85067, type: 3}
 --- !u!1001 &566352496
 PrefabInstance:
@@ -2055,25 +2026,9 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: -3018735832568401430, guid: 3df2a120e3aa74c418629e59e9b9064a, type: 3}
-      propertyPath: m_UseGravity
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 1782917794660998326, guid: 3df2a120e3aa74c418629e59e9b9064a, type: 3}
       propertyPath: m_RootOrder
       value: 9
-      objectReference: {fileID: 0}
-    - target: {fileID: 1782917794660998326, guid: 3df2a120e3aa74c418629e59e9b9064a, type: 3}
-      propertyPath: m_LocalScale.x
-      value: 2.3453808
-      objectReference: {fileID: 0}
-    - target: {fileID: 1782917794660998326, guid: 3df2a120e3aa74c418629e59e9b9064a, type: 3}
-      propertyPath: m_LocalScale.y
-      value: 0.52401
-      objectReference: {fileID: 0}
-    - target: {fileID: 1782917794660998326, guid: 3df2a120e3aa74c418629e59e9b9064a, type: 3}
-      propertyPath: m_LocalScale.z
-      value: 2.867
       objectReference: {fileID: 0}
     - target: {fileID: 1782917794660998326, guid: 3df2a120e3aa74c418629e59e9b9064a, type: 3}
       propertyPath: m_LocalPosition.x
@@ -2119,24 +2074,7 @@ PrefabInstance:
       propertyPath: m_Name
       value: TestBoat
       objectReference: {fileID: 0}
-    - target: {fileID: 1782917794660998329, guid: 3df2a120e3aa74c418629e59e9b9064a, type: 3}
-      propertyPath: m_TagString
-      value: Boat
-      objectReference: {fileID: 0}
-    - target: {fileID: 3745443410806209569, guid: 3df2a120e3aa74c418629e59e9b9064a, type: 3}
-      propertyPath: m_Enabled
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3745443410806209569, guid: 3df2a120e3aa74c418629e59e9b9064a, type: 3}
-      propertyPath: perRadian
-      value: 0.003
-      objectReference: {fileID: 0}
-    - target: {fileID: 3745443410806209569, guid: 3df2a120e3aa74c418629e59e9b9064a, type: 3}
-      propertyPath: verticalSpeed
-      value: 0.5
-      objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 0}
+    m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3df2a120e3aa74c418629e59e9b9064a, type: 3}
 --- !u!1001 &796660400
 PrefabInstance:

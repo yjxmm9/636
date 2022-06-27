@@ -32,8 +32,11 @@ public class Win : MonoBehaviour
     private void Rewind()
     {
         GameObject testBoat = GameObject.Find("TestBoat");
+        GameObject player = GameObject.Find("Player");
         testBoat.transform.position = new Vector3(testBoat.transform.position.x, 0, 0);
         testBoat.GetComponent<TestBoatController>().speed += 2;
+        player.transform.position = new Vector3(testBoat.transform.position.x, 0, 0);
+        player.GetComponent<TestBoatController>().speed += 2;
     }
     
 
