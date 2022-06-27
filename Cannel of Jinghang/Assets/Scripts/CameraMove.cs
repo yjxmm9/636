@@ -14,7 +14,7 @@ public class CameraMove : MonoBehaviour
     }
 
     // Update is called once per frame
-    void FixedUpdate()
+    void LateUpdate()
     {
         this.transform.position = new Vector3(TestBoat.transform.position.x, 0, TestBoat.transform.position.z);
     }
