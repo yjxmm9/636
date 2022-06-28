@@ -13,7 +13,7 @@ public class Barrier : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         Debug.Log(other.name + "≈ˆµΩ¡ÀŒ“");
-        if (other.name == "TestBoat")
+        if (other.name == "TestBoat"|| other.name == "Player")
         {
             Time.timeScale = 0;
         }

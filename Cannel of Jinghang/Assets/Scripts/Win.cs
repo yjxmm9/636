@@ -35,8 +35,8 @@ public class Win : MonoBehaviour
         GameObject player = GameObject.Find("Player");
         testBoat.transform.position = new Vector3(testBoat.transform.position.x, 0, 0);
         testBoat.GetComponent<TestBoatController>().speed += 2;
-        player.transform.position = new Vector3(testBoat.transform.position.x, 0, 0);
-        player.GetComponent<TestBoatController>().speed += 2;
+        player.transform.position = new Vector3(player.transform.position.x, 1, 0);
+        player.GetComponent<PlayerController>().speed += 2;
     }
     
 

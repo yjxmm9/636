@@ -12,13 +12,13 @@ public class TestBoatController : MonoBehaviour
     public float verticalTime = 1f;
     //how fast to move vertically
     public float verticalSpeed = 5f;
-    Transform myTrans;
+    //Transform myTrans;
 
     // Start is called before the first frame update
     void Start()
     {
-        myTrans = this.transform;
-        StartCoroutine(Rise());
+        //myTrans = this.transform;
+        //StartCoroutine(Rise());
     }
 
     // Update is called once per frame
@@ -57,28 +57,37 @@ public class TestBoatController : MonoBehaviour
         transform.rotation = Quaternion.Lerp(transform.rotation, quaDir, Time.fixedDeltaTime * turnspeed);
     }
 
-    IEnumerator Rise()
+    private void OnTriggerEnter(Collider other)
     {
-        float t = verticalTime;
-        while (t > 0f)
+        if ("Coin" == other.gameObject.tag)
         {
-            myTrans.Translate(myTrans.up * verticalSpeed * Time.deltaTime);
-            t -= Time.deltaTime;
-            yield return new WaitForEndOfFrame();
+            UIManager.Instance.UpdateUI();
+            Destroy(other.gameObject);
         }
-        StartCoroutine(Fall());
     }
 
-    IEnumerator Fall()
-    {
-        float t = verticalTime;
-        while (t > 0f)
-        {
-            myTrans.Translate(-myTrans.up * verticalSpeed * Time.deltaTime);
-            t -= Time.deltaTime;
-            yield return new WaitForEndOfFrame();
-        }
-        StartCoroutine(Rise());
+    //IEnumerator Rise()
+    //{
+    //    float t = verticalTime;
+    //    while (t > 0f)
+    //    {
+    //        myTrans.Translate(myTrans.up * verticalSpeed * Time.deltaTime);
+    //        t -= Time.deltaTime;
+    //        yield return new WaitForEndOfFrame();
+    //    }
+    //    StartCoroutine(Fall());
+    //}
 
-    }
+    //IEnumerator Fall()
+    //{
+    //    float t = verticalTime;
+    //    while (t > 0f)
+    //    {
+    //        myTrans.Translate(-myTrans.up * verticalSpeed * Time.deltaTime);
+    //        t -= Time.deltaTime;
+    //        yield return new WaitForEndOfFrame();
+    //    }
+    //    StartCoroutine(Rise());
+
+    //}
 }

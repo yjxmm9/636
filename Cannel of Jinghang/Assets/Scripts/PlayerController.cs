@@ -8,9 +8,11 @@ public class PlayerController : MonoBehaviour
     public float speed;
     public float turnspeed;
     private Rigidbody rb;
-    public Vector3 jump;
+    private Vector3 jump;
     public float jumpForce = 2f;
-    public bool isGrounded;
+    private bool isGrounded;
+    private bool isJumping;
+    private Transform groundcheck;
 
 
 
@@ -24,16 +26,23 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Space))
+        isGrounded = Physics.Linecast(transform.position, groundcheck.transform.position, 1 << LayerMask.NameToLayer("Ground"));
+        if (Input.GetKeyDown(KeyCode.Space)&&isGrounded)
         {
-
+            GetComponent<Animator>().SetBool("isFalling", true);
             rb.AddForce(jump * jumpForce, ForceMode.Impulse);
             isGrounded = false;
         }
     }
 
-    void OnCollisionStay(){
-        isGrounded = true;
+    
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (!other.CompareTag("Player"))
+        {
+            GetComponent<Animator>().SetBool("isFalling", false);
+        }
     }
 
 
