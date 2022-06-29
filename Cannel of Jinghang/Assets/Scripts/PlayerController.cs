@@ -10,9 +10,13 @@ public class PlayerController : MonoBehaviour
     private Rigidbody rb;
     private Vector3 jump;
     public float jumpForce = 2f;
-    private bool isGrounded;
-    private bool isJumping;
-    private Transform groundcheck;
+
+    public float jumpTimer;
+    private bool isjumping;
+
+    Vector3 collStandSize, collStandOffset, collCrouchSize, collCrouchOffset;
+    BoxCollider coll;
+    bool isCrouch;
 
 
 
@@ -21,21 +25,39 @@ public class PlayerController : MonoBehaviour
     {
         rb = this.GetComponent<Rigidbody>();
         jump = new Vector3(0.0f, 1f, 0.0f);
+
+        coll = GetComponent<BoxCollider>();
+        collStandSize = coll.size;    //获取一开始的碰撞体大小
+        collStandOffset = coll.center;    //获取一开始的碰撞体位置
+        collCrouchSize = new Vector3(coll.size.x, coll.size.y / 2, coll.size.z);  //获取下蹲时候的碰撞体大小
+        collCrouchOffset = new Vector3(coll.center.x, -0.25f, coll.center.z);    //获取下蹲时候的碰撞体位置
+        
     }
 
     // Update is called once per frame
     void Update()
     {
-        isGrounded = Physics.Linecast(transform.position, groundcheck.transform.position, 1 << LayerMask.NameToLayer("Ground"));
-        if (Input.GetKeyDown(KeyCode.Space)&&isGrounded)
+        if (isjumping)
+        {
+            jumpTimer += Time.deltaTime;
+            if (jumpTimer>2)
+            {
+                isjumping = false;
+            }
+        }
+
+
+        if (Input.GetKeyDown(KeyCode.Space)&&!isjumping&&!isCrouch)
         {
             GetComponent<Animator>().SetBool("isFalling", true);
             rb.AddForce(jump * jumpForce, ForceMode.Impulse);
-            isGrounded = false;
+            jumpTimer = 0;
+            isjumping = true;
         }
+
+        Crouch();
     }
 
-    
 
     private void OnTriggerEnter(Collider other)
     {
@@ -65,6 +87,27 @@ public class PlayerController : MonoBehaviour
         Quaternion quaDir = Quaternion.LookRotation(dir, Vector3.up);
         //缓慢转动到目标点
         transform.rotation = Quaternion.Lerp(transform.rotation, quaDir, Time.fixedDeltaTime * turnspeed);
+    }
+
+    private void Crouch()
+    {
+        if (Input.GetKeyDown(KeyCode.C)&&!isjumping)
+        {
+            isCrouch = true;
+            coll.size = collCrouchSize;
+            coll.center = collCrouchOffset;
+            GetComponent<Animator>().SetBool("isCrouching", true);
+            //transform.localScale = new Vector3(transform.localScale.x, transform.localScale.y/2, transform.localScale.z);
+        }
+        else if(Input.GetKeyUp(KeyCode.C) && !isjumping)
+        {
+            isCrouch = false;
+            coll.center = collStandOffset;
+            coll.size = collStandSize;
+            GetComponent<Animator>().SetBool("isCrouching", false);
+            //transform.localScale = new Vector3(transform.localScale.x, transform.localScale.y*2, transform.localScale.z);
+
+        }
     }
 
     
