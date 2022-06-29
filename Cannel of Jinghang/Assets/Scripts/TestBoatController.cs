@@ -14,6 +14,9 @@ public class TestBoatController : MonoBehaviour
     public float verticalSpeed = 5f;
     //Transform myTrans;
 
+    //控制玩家是否可以吸取周围的金币
+    private bool isMagnet = false;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -32,7 +35,7 @@ public class TestBoatController : MonoBehaviour
             Time.timeScale = 1;
             return;
         }
-
+        Magnet();
 
 
 
@@ -61,10 +64,38 @@ public class TestBoatController : MonoBehaviour
     {
         if ("Coin" == other.gameObject.tag)
         {
-            UIManager.Instance.UpdateUI();
+            UIManager.Instance.UpdateUI(100);
+            Destroy(other.gameObject);
+        }
+        if (other.tag.Equals("Magnet"))
+        {
+            //设置玩家可以吸取周围的金币
+            isMagnet = true;
+            //销毁吸铁石
             Destroy(other.gameObject);
         }
     }
+
+    private void Magnet()
+    {
+        if (isMagnet)
+        {
+            //检测以玩家为球心半径是5的范围内的所有的带有碰撞器的游戏对象
+            Collider[] colliders = Physics.OverlapSphere(this.transform.position, 5);
+            foreach (var item in colliders)
+            {
+                //如果是金币
+                if (item.tag.Equals("Coin"))
+                {
+                    //让金币的开始移动
+                    item.GetComponent<Coin>().isCanMove = true;
+                }
+            }
+
+        }
+    }
+
+    
 
     //IEnumerator Rise()
     //{

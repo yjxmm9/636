@@ -35,7 +35,7 @@ public class UIManager : MonoBehaviour
         
     }
 
-    public void UpdateUI(int s=100)
+    public void UpdateUI(int s)
     {
         score += s;
         ScoreText.text = "µÃ·Ö£º"+score;

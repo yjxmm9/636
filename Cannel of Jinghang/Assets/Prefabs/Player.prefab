@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 2309614257140363841}
   - component: {fileID: 1156481567528101148}
   - component: {fileID: 2776797063726209535}
-  - component: {fileID: 304313290}
+  - component: {fileID: 955748660}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -144,7 +144,7 @@ MonoBehaviour:
   turnspeed: 6
   jumpForce: 10
   jumpTimer: 4.5
---- !u!95 &304313290
+--- !u!95 &955748660
 Animator:
   serializedVersion: 3
   m_ObjectHideFlags: 0

@@ -74,7 +74,7 @@ public class PlayerController : MonoBehaviour
         float horizontal = Input.GetAxis("Horizontal");
         transform.Translate(horizontal * speed * Time.fixedDeltaTime, 0, speed * Time.fixedDeltaTime);//向前移动
         Rotating(horizontal);//转向方法
-        
+        Score();
 
 
     }
@@ -110,6 +110,9 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    
+    private void Score()
+    {
+        UIManager.Instance.UpdateUI(1);
+    }
 
 }
