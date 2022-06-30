@@ -129,3 +129,5 @@ MonoBehaviour:
   turnspeed: 6
   verticalTime: 1
   verticalSpeed: 0.5
+  changeSpeed: 10
+  player: {fileID: 2309614257140363847, guid: 4e5821648dde8bc43aa2690d9ce85067, type: 3}

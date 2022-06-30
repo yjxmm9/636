@@ -7,6 +7,10 @@ TagManager:
   - Boat
   - Coin
   - Magnet
+  - Shield
+  - Barrier
+  - RiverBank
+  - Speed
   layers:
   - Default
   - TransparentFX

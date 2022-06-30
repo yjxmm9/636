@@ -6,6 +6,7 @@ using UnityEngine.SceneManagement;
 public class TestBoatController : MonoBehaviour
 {
     public float speed;//前进速度
+    
     public float turnspeed;//转向速度
 
     //how long to keep moving up or down until switching direction
@@ -16,6 +17,16 @@ public class TestBoatController : MonoBehaviour
 
     //控制玩家是否可以吸取周围的金币
     private bool isMagnet = false;
+    private float magnetTimer=10f;
+
+
+    private bool isShield = false;
+    private float shieldTimer = 10f;
+
+    public float changeSpeed;
+    public GameObject player;
+    private float speedTimer=10f;
+    private bool isSpeeding;
 
     // Start is called before the first frame update
     void Start()
@@ -37,7 +48,37 @@ public class TestBoatController : MonoBehaviour
         }
         Magnet();
 
+        if (isMagnet)
+        {
+            magnetTimer -= Time.deltaTime;
+            if (magnetTimer<=0)
+            {
+                isMagnet = false;
+                magnetTimer = 10f;
+            }
+        }
 
+        if (isShield)
+        {
+            shieldTimer -= Time.deltaTime;
+            if (shieldTimer<=0)
+            {
+                isShield = false;
+                shieldTimer = 10f;
+            }
+        }
+
+        if (isSpeeding)
+        {
+            speedTimer -= Time.deltaTime;
+            if (speedTimer <= 0)
+            {
+                isSpeeding = false;
+                speed -= changeSpeed;
+                player.GetComponent<PlayerController>().speed -= changeSpeed;
+                speedTimer = 10f;
+            }
+        }
 
     }
 
@@ -74,6 +115,40 @@ public class TestBoatController : MonoBehaviour
             //销毁吸铁石
             Destroy(other.gameObject);
         }
+        if (other.tag.Equals("Shield"))
+        {
+            isShield = true;
+            Destroy(other.gameObject);
+        }
+
+        if (other.tag.Equals("RiverBank"))
+        {
+            Time.timeScale = 0;
+        }
+
+        if (other.tag.Equals("Speed"))
+        {
+            isSpeeding = true;
+            speed += changeSpeed;
+            player.GetComponent<PlayerController>().speed+=changeSpeed;
+            Destroy(other.gameObject);
+        }
+
+        if (other.tag.Equals("Barrier"))
+        {
+            if (isShield)
+            {
+                Destroy(other.gameObject);
+                return;
+            }
+            else
+            {
+                Time.timeScale = 0;
+            }
+            
+        }
+
+        
     }
 
     private void Magnet()
@@ -94,6 +169,8 @@ public class TestBoatController : MonoBehaviour
 
         }
     }
+
+    
 
     
 
