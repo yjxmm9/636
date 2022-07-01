@@ -11,12 +11,13 @@ public class PlayerController : MonoBehaviour
     private Vector3 jump;
     public float jumpForce = 2f;
 
-    public float jumpTimer;
-    private bool isjumping;
+    //public float jumpTimer;
+    public bool isjumping = false;
+    public int gravity = -35;
 
     Vector3 collStandSize, collStandOffset, collCrouchSize, collCrouchOffset;
     BoxCollider coll;
-    bool isCrouch;
+    private bool isCrouch = false;
 
 
 
@@ -37,21 +38,19 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (isjumping)
+        //jumpTimer += Time.deltaTime;
+        if (this.transform.position.y < 1)
         {
-            jumpTimer += Time.deltaTime;
-            if (jumpTimer>2)
-            {
-                isjumping = false;
-            }
+            isjumping = false;
         }
 
+        Physics.gravity = new Vector3(0, gravity, 0);  // gravity= -35 其他的默认
 
         if (Input.GetKeyDown(KeyCode.Space)&&!isjumping&&!isCrouch)
         {
             GetComponent<Animator>().SetBool("isFalling", true);
             rb.AddForce(jump * jumpForce, ForceMode.Impulse);
-            jumpTimer = 0;
+            //jumpTimer = 0;
             isjumping = true;
         }
 
