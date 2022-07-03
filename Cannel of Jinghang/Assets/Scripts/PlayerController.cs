@@ -19,6 +19,9 @@ public class PlayerController : MonoBehaviour
     BoxCollider coll;
     private bool isCrouch = false;
 
+    private bool isShield;//护盾
+    public GameObject testBoat;//传入testBoat物体
+
 
 
     // Start is called before the first frame update
@@ -54,6 +57,8 @@ public class PlayerController : MonoBehaviour
             isjumping = true;
         }
 
+        isShield = testBoat.GetComponent<TestBoatController>().isShield;
+
         Crouch();
     }
 
@@ -63,6 +68,20 @@ public class PlayerController : MonoBehaviour
         if (!other.CompareTag("Player"))
         {
             GetComponent<Animator>().SetBool("isFalling", false);
+        }
+
+        if (other.tag.Equals("Barrier"))
+        {
+            if (isShield)
+            {
+                Destroy(other.gameObject);
+                return;
+            }
+            else
+            {
+                Time.timeScale = 0;
+            }
+
         }
     }
 

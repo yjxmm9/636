@@ -20,7 +20,7 @@ public class TestBoatController : MonoBehaviour
     private float magnetTimer=10f;
 
 
-    private bool isShield = false;
+    public bool isShield = false;
     private float shieldTimer = 10f;
 
     public float changeSpeed;
