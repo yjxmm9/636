@@ -28,7 +28,7 @@ public class SpeedUpUI : MonoBehaviour
     private void SpeedUped ()
     {
         GameObject testBoat = GameObject.Find("TestBoat");
-        GameObject player = GameObject.Find("Player");
+        GameObject player = GameObject.Find("JunkoChan");
         testBoat.GetComponent<TestBoatController>().speed += 5;;
         player.GetComponent<PlayerController>().speed += 5;
     }

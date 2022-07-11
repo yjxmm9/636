@@ -19,7 +19,7 @@ public class PlayerController : MonoBehaviour
     Vector3  collStandOffset,  collCrouchOffset;
     float collStandSize, collCrouchSize,collStandRadius,collCrouchRadius;
     CapsuleCollider coll;
-    private bool isCrouch = false;
+    
 
     private bool isShield;//护盾
     public GameObject testBoat;//传入testBoat物体
