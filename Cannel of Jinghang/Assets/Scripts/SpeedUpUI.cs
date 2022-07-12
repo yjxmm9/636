@@ -29,7 +29,7 @@ public class SpeedUpUI : MonoBehaviour
     {
         GameObject testBoat = GameObject.Find("TestBoat");
         GameObject player = GameObject.Find("JunkoChan");
-        testBoat.GetComponent<TestBoatController>().speed += 5;;
-        player.GetComponent<PlayerController>().speed += 5;
+        testBoat.GetComponent<TestBoatController>().speed += 4;;
+        player.GetComponent<PlayerController>().speed += 4;
     }
 }
