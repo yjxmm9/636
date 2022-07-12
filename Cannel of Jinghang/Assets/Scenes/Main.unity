@@ -6399,12 +6399,12 @@ MonoBehaviour:
     m_NumAlphaKeys: 2
   colorGradientTexture: {fileID: 0}
   shallowColor: {r: 0, g: 0.6313726, b: 1, a: 1}
-  deepColor: {r: 0, g: 0.42743647, b: 0.6784314, a: 1}
+  deepColor: {r: 0, g: 0.42743632, b: 0.6784314, a: 1}
   colorDepth: 2.59
-  horizonColor: {r: 0, g: 0.22743648, b: 0.8, a: 1}
+  horizonColor: {r: 0, g: 0.22743633, b: 0.8, a: 1}
   horizonDistance: 20
   shoreFade: 0
-  shoreColor: {r: 0, g: 0.98039216, b: 0.30194628, a: 0}
+  shoreColor: {r: 0, g: 0.98039216, b: 0.3019461, a: 0}
   shoreStrength: 0
   shoreBlend: 0
   shoreDepth: 0
