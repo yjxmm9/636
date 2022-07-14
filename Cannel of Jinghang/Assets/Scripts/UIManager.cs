@@ -44,7 +44,7 @@ public class UIManager : MonoBehaviour
     public void Again()
     {
         Time.timeScale = 1;
-        UnityEngine.SceneManagement.SceneManager.LoadScene(2);//TODO
+        UnityEngine.SceneManagement.SceneManager.LoadScene(1);//TODO
     }
 
     public void Menu()
