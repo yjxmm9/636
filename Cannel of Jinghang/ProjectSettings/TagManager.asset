@@ -11,6 +11,7 @@ TagManager:
   - Barrier
   - RiverBank
   - Speed
+  - TestBoat
   layers:
   - Default
   - TransparentFX
