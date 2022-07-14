@@ -98,6 +98,8 @@ public class PlayerController : MonoBehaviour
             else
             {
                 Time.timeScale = 0;
+                GameObject canvas = GameObject.Find("DieUI");
+                canvas.transform.Find("Panel").gameObject.SetActive(true);
             }
 
         }
