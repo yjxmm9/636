@@ -33,6 +33,9 @@ public class TestBoatController : MonoBehaviour
     {
         //myTrans = this.transform;
         //StartCoroutine(Rise());
+        Time.timeScale = 1;
+        GameObject canvas = GameObject.Find("DieUI");
+        canvas.transform.Find("Panel").gameObject.SetActive(false);
     }
 
     // Update is called once per frame
@@ -103,6 +106,7 @@ public class TestBoatController : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
+        
         if ("Coin" == other.gameObject.tag)
         {
             UIManager.Instance.UpdateUI(100);
@@ -124,6 +128,8 @@ public class TestBoatController : MonoBehaviour
         if (other.tag.Equals("RiverBank"))
         {
             Time.timeScale = 0;
+            GameObject canvas = GameObject.Find("DieUI");
+            canvas.transform.Find("Panel").gameObject.SetActive(true);
         }
 
         if (other.tag.Equals("Speed"))
@@ -144,6 +150,8 @@ public class TestBoatController : MonoBehaviour
             else
             {
                 Time.timeScale = 0;
+                GameObject canvas = GameObject.Find("DieUI");
+                canvas.transform.Find("Panel").gameObject.SetActive(true);
             }
             
         }

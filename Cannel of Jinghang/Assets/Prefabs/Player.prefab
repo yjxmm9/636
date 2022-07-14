@@ -15,7 +15,6 @@ GameObject:
   - component: {fileID: 2309614257140363841}
   - component: {fileID: 1156481567528101148}
   - component: {fileID: 2776797063726209535}
-  - component: {fileID: 955748660}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -146,22 +145,3 @@ MonoBehaviour:
   isjumping: 0
   gravity: -35
   testBoat: {fileID: 0}
---- !u!95 &955748660
-Animator:
-  serializedVersion: 3
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2309614257140363847}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 01b966c3870b0534c90fda7a23bd6040, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorControllerStateOnDisable: 0
