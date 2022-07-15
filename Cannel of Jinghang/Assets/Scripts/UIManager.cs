@@ -40,4 +40,15 @@ public class UIManager : MonoBehaviour
         score += s;
         ScoreText.text = "µÃ·Ö£º"+score;
     }
+
+    public void Again()
+    {
+        Time.timeScale = 1;
+        UnityEngine.SceneManagement.SceneManager.LoadScene(1);//TODO
+    }
+
+    public void Menu()
+    {
+        UnityEngine.SceneManagement.SceneManager.LoadScene(0);
+    }
 }
