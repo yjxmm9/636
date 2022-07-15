@@ -9,8 +9,8 @@ public class Collect : MonoBehaviour
     {
         if (other.tag == "TestBoat" || other.tag == "Player")
         {
-            Destroy(this.gameObject);
-
+            WinUI.collectionCount += 1;
+            Destroy(this.gameObject);//在收集到之后摧毁该物体
         }
     }
 
