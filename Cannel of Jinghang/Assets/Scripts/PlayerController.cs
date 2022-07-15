@@ -12,9 +12,10 @@ public class PlayerController : MonoBehaviour
     public float jumpForce = 2f;
 
     //public float jumpTimer;
-    public bool isjumping = false;
+    private bool isjumping = false;
     public int gravity = -35;
     private float Height;
+    private bool iscrouching = false;
 
     Vector3  collStandOffset,  collCrouchOffset;
     float collStandSize, collCrouchSize,collStandRadius,collCrouchRadius;
@@ -25,6 +26,11 @@ public class PlayerController : MonoBehaviour
     public GameObject testBoat;//传入testBoat物体
 
     private Animator pa;
+
+    public AudioSource audioSource;
+    public AudioSource boatAudioSource;
+    public AudioClip JumpSound;
+    public AudioClip BoatSound;
 
 
 
@@ -61,10 +67,12 @@ public class PlayerController : MonoBehaviour
 
         Physics.gravity = new Vector3(0, gravity, 0);  // gravity= -35 其他的默认
 
-        if (Input.GetKeyDown(KeyCode.Space)&&CheckGrounded())
+        if (Input.GetKeyDown(KeyCode.Space)&&CheckGrounded()&&!iscrouching)
         {
             pa.SetBool("Jump", true);
             rb.AddForce(jump * jumpForce, ForceMode.Impulse);
+            isjumping = true;
+            PlaySound(JumpSound);
             //jumpTimer = 0;
             
         }
@@ -75,12 +83,18 @@ public class PlayerController : MonoBehaviour
         else
         {
             pa.SetBool("Fall", false);
+            isjumping = false;
         }
         Height = transform.position.y;
 
         isShield = testBoat.GetComponent<TestBoatController>().isShield;
 
         Crouch();
+
+        if (Time.timeScale==0)
+        {
+            boatAudioSource.Stop();
+        }
     }
 
 
@@ -111,6 +125,11 @@ public class PlayerController : MonoBehaviour
 
         float horizontal = Input.GetAxis("Horizontal");
         transform.Translate(horizontal * speed * Time.fixedDeltaTime, 0, speed * Time.fixedDeltaTime);//向前移动
+        if (!boatAudioSource.isPlaying)
+        {
+            boatAudioSource.clip = BoatSound;
+            boatAudioSource.Play();
+        }
         Rotating(horizontal);//转向方法
         Score();
 
@@ -129,20 +148,22 @@ public class PlayerController : MonoBehaviour
 
     private void Crouch()
     {
-        if (Input.GetKeyDown(KeyCode.C)&&CheckGrounded())
+        if (Input.GetKeyDown(KeyCode.C)&&CheckGrounded()&&!isjumping)
         {
             pa.SetBool("Crouch", true);
             coll.height = collCrouchSize;
             coll.center = collCrouchOffset;
+            iscrouching = true;
             //coll.radius = collCrouchRadius;
             
             //transform.localScale = new Vector3(transform.localScale.x, transform.localScale.y/2, transform.localScale.z);
         }
-        else if(Input.GetKeyUp(KeyCode.C) && CheckGrounded())
+        else if(Input.GetKeyUp(KeyCode.C) && CheckGrounded()&&!isjumping)
         {
             pa.SetBool("Crouch", false);
             coll.center = collStandOffset;
             coll.height = collStandSize;
+            iscrouching = false;
             //coll.radius = collStandRadius;
             //transform.localScale = new Vector3(transform.localScale.x, transform.localScale.y*2, transform.localScale.z);
 
@@ -158,6 +179,11 @@ public class PlayerController : MonoBehaviour
     {//Judge whether Junkochan is on the ground or not
         Ray ray = new Ray(this.transform.position + Vector3.up * 0.05f, Vector3.down * 0.15f);//Shoot ray at 0.05f upper from Junkochan's feet position to the ground with its length of 0.1f
         return Physics.Raycast(ray, 0.15f);//If the ray hit the ground, return true
+    }
+
+    public void PlaySound(AudioClip audioClip)
+    {
+        audioSource.PlayOneShot(audioClip, 0.25f);
     }
 
 }
