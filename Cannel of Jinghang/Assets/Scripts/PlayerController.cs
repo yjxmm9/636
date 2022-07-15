@@ -31,6 +31,7 @@ public class PlayerController : MonoBehaviour
     public AudioSource boatAudioSource;
     public AudioClip JumpSound;
     public AudioClip BoatSound;
+    public AudioClip DefeatSound;
 
 
 
@@ -48,7 +49,9 @@ public class PlayerController : MonoBehaviour
         collCrouchSize = coll.height/1.3f;  //获取下蹲时候的碰撞体大小
         collCrouchOffset = new Vector3(coll.center.x, coll.center.y/1.3f, coll.center.z);    //获取下蹲时候的碰撞体位置
         collCrouchRadius = coll.radius / 2;
-        
+
+        boatAudioSource.clip = BoatSound;
+        boatAudioSource.Play();
     }
 
     // Update is called once per frame
@@ -114,6 +117,7 @@ public class PlayerController : MonoBehaviour
                 Time.timeScale = 0;
                 GameObject canvas = GameObject.Find("DieUI");
                 canvas.transform.Find("Panel").gameObject.SetActive(true);
+                PlaySound(DefeatSound);
             }
 
         }
@@ -125,11 +129,6 @@ public class PlayerController : MonoBehaviour
 
         float horizontal = Input.GetAxis("Horizontal");
         transform.Translate(horizontal * speed * Time.fixedDeltaTime, 0, speed * Time.fixedDeltaTime);//向前移动
-        if (!boatAudioSource.isPlaying)
-        {
-            boatAudioSource.clip = BoatSound;
-            boatAudioSource.Play();
-        }
         Rotating(horizontal);//转向方法
         Score();
 

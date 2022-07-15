@@ -1155,6 +1155,7 @@ MonoBehaviour:
   boatAudioSource: {fileID: -8736633095025467994}
   JumpSound: {fileID: 8300000, guid: 9ca8e49587e6c3b4090555e87f721fbb, type: 3}
   BoatSound: {fileID: 8300000, guid: f75db153145081949a1d54df27c96c21, type: 3}
+  DefeatSound: {fileID: 8300000, guid: fc48eb8e126572e49abf971388d121bb, type: 3}
 --- !u!82 &6044062928783099120
 AudioSource:
   m_ObjectHideFlags: 0

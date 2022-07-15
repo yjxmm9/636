@@ -28,6 +28,9 @@ public class TestBoatController : MonoBehaviour
     private float speedTimer=10f;
     private bool isSpeeding;
 
+    public AudioSource audiosource;
+    public AudioClip DefeatSound;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -130,6 +133,7 @@ public class TestBoatController : MonoBehaviour
             Time.timeScale = 0;
             GameObject canvas = GameObject.Find("DieUI");
             canvas.transform.Find("Panel").gameObject.SetActive(true);
+            PlaySound(DefeatSound);
         }
 
         if (other.tag.Equals("Speed"))
@@ -152,6 +156,7 @@ public class TestBoatController : MonoBehaviour
                 Time.timeScale = 0;
                 GameObject canvas = GameObject.Find("DieUI");
                 canvas.transform.Find("Panel").gameObject.SetActive(true);
+                PlaySound(DefeatSound);
             }
             
         }
@@ -176,11 +181,16 @@ public class TestBoatController : MonoBehaviour
             }
 
         }
+
+        
     }
 
-    
 
-    
+    public void PlaySound(AudioClip audioClip)
+    {
+        audiosource.PlayOneShot(audioClip, 0.25f);
+    }
+
 
     //IEnumerator Rise()
     //{
