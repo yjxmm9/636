@@ -7,18 +7,50 @@ public class WinUI : MonoBehaviour
 {
     // Start is called before the first frame update
 
+    public static int collectionCount;//已收集的收集品数目
 
     void Start()
     {
+        collectionCount = 0;//已收集的收集品数目初始化为0
+
         GameObject canvas = GameObject.Find("WinUI");
         canvas.transform.Find("Panel").gameObject.SetActive(false);
-        
+        canvas.transform.Find("StarOneFailed").gameObject.SetActive(false);
+        canvas.transform.Find("StarTwoFailed").gameObject.SetActive(false);
+        canvas.transform.Find("StarThreeFailed").gameObject.SetActive(false);
+        canvas.transform.Find("StarOne").gameObject.SetActive(false);
+        canvas.transform.Find("StarTwo").gameObject.SetActive(false);
+        canvas.transform.Find("StarThree").gameObject.SetActive(true);
     }
 
     private void OnTriggerEnter(Collider other)
     {
         GameObject canvas = GameObject.Find("WinUI");
         canvas.transform.Find("Panel").gameObject.SetActive(true);
+        if(collectionCount == 0)
+        {
+            canvas.transform.Find("StarOneFailed").gameObject.SetActive(true);
+            canvas.transform.Find("StarTwoFailed").gameObject.SetActive(true);
+            canvas.transform.Find("StarThreeFailed").gameObject.SetActive(true);
+        }
+        if(collectionCount == 1)
+        {
+            canvas.transform.Find("StarOne").gameObject.SetActive(true);
+            canvas.transform.Find("StarTwoFailed").gameObject.SetActive(true);
+            canvas.transform.Find("StarThreeFailed").gameObject.SetActive(true);
+        }
+        if(collectionCount == 2)
+        {
+            canvas.transform.Find("StarOne").gameObject.SetActive(true);
+            canvas.transform.Find("StarTwo").gameObject.SetActive(true);
+            canvas.transform.Find("StarThreeFailed").gameObject.SetActive(true);
+        }
+        if(collectionCount == 3)
+        {
+            canvas.transform.Find("StarOne").gameObject.SetActive(true);
+            canvas.transform.Find("StarTwo").gameObject.SetActive(true);
+            canvas.transform.Find("StarThree").gameObject.SetActive(true);
+        }
     }
 
     private void OnTriggerExit(Collider other)
@@ -39,6 +71,6 @@ public class WinUI : MonoBehaviour
         player.GetComponent<PlayerController>().speed += 2;
     }
     
-
+    
 
 }

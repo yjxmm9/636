@@ -5,12 +5,14 @@ using UnityEngine;
 public class Collect : MonoBehaviour
 {
 
+
+
     private void OnTriggerEnter(Collider other)
     {
         if (other.tag == "TestBoat" || other.tag == "Player")
         {
-            Destroy(this.gameObject);
-
+            WinUI.collectionCount += 1;
+            Destroy(this.gameObject);//在收集到之后摧毁该物体
         }
     }
 
