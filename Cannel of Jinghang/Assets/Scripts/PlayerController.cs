@@ -22,8 +22,9 @@ public class PlayerController : MonoBehaviour
     CapsuleCollider coll;
     
 
-    private bool isShield;//护盾
+    public bool isShield;//护盾
     public GameObject testBoat;//传入testBoat物体
+    public GameObject ButtonAnswer;
 
     private Animator pa;
 
@@ -33,6 +34,14 @@ public class PlayerController : MonoBehaviour
     public AudioClip BoatSound;
     public AudioClip DefeatSound;
 
+    private void Awake()
+    {
+        if (GameObject.Find("Forever").GetComponent<Forever>().isrevivedplayer)
+        {
+            transform.position = GameObject.Find("Forever").GetComponent<Forever>().newpositionplayer;
+            GameObject.Find("Forever").GetComponent<Forever>().isrevivedplayer = false;
+        }
+    }
 
 
     // Start is called before the first frame update
@@ -97,6 +106,11 @@ public class PlayerController : MonoBehaviour
         if (Time.timeScale==0)
         {
             boatAudioSource.Stop();
+            PlayerPrefs.SetInt("lasts", UIManager.Instance.score);
+            if (PlayerPrefs.GetInt("bests", 0) < UIManager.Instance.score)
+            {
+                PlayerPrefs.SetInt("bests", UIManager.Instance.score);
+            }
         }
     }
 
@@ -107,18 +121,21 @@ public class PlayerController : MonoBehaviour
 
         if (other.tag.Equals("Barrier"))
         {
-            if (isShield)
-            {
-                Destroy(other.gameObject);
-                return;
-            }
-            else
-            {
+            
                 Time.timeScale = 0;
                 GameObject canvas = GameObject.Find("DieUI");
                 canvas.transform.Find("Panel").gameObject.SetActive(true);
-                PlaySound(DefeatSound);
+            if (GameObject.Find("Forever").GetComponent<Forever>().isrevivedbutton)
+            {
+                ButtonAnswer.SetActive(false);
             }
+            //Debug.Log(UIManager.Instance.revivetime);
+            //if (UIManager.Instance.revivetime != 0)
+            //{
+            //    ButtonAnswer.SetActive(false);
+            //}
+            PlaySound(DefeatSound);
+            
 
         }
     }

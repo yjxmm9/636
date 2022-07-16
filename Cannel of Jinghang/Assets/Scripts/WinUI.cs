@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class WinUI : MonoBehaviour
 {
@@ -19,11 +20,14 @@ public class WinUI : MonoBehaviour
     public GameObject StarOne;
     public GameObject StarTwo;
     public GameObject StarThree;
+    public GameObject InGameUI;
+
+    public Text FinalScore;
 
 
     void Start()
     {
-        collectionCount = 3;//已收集的收集品数目初始化为0
+        collectionCount = 0;//已收集的收集品数目初始化为0
 
         //GameObject canvas = GameObject.Find("WinUI");
         //canvas.transform.Find("Panel").gameObject.SetActive(false);
@@ -39,7 +43,7 @@ public class WinUI : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        
+        InGameUI.SetActive(false);
         Invoke("ActivateUI", 2f);
         Player.SetActive(false);
         FinalAnim.SetActive(true);
@@ -67,6 +71,7 @@ public class WinUI : MonoBehaviour
 
     private void ActivateUI()
     {
+        
         winUI.SetActive(true);
         StarOne.SetActive(false);
         StarTwo.SetActive(false);
@@ -100,7 +105,7 @@ public class WinUI : MonoBehaviour
             StarTwo.SetActive(true);
             StarThree.SetActive(true);
         }
-
+        FinalScore.text = "得分:" + UIManager.Instance.score;
     }
 
 }

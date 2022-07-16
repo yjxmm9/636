@@ -25,7 +25,7 @@ public class StartUI : MonoBehaviour
 
     public void StartGame()
     {
-        UnityEngine.SceneManagement.SceneManager.LoadScene(1);
+        UnityEngine.SceneManagement.SceneManager.LoadScene(3);
     }
 
     public void Quit()

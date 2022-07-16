@@ -30,6 +30,17 @@ public class TestBoatController : MonoBehaviour
 
     public AudioSource audiosource;
     public AudioClip DefeatSound;
+    public GameObject ButtonAnswer;
+
+
+    private void Awake()
+    {
+        if (GameObject.Find("Forever").GetComponent<Forever>().isrevivedboat)
+        {
+            transform.position = GameObject.Find("Forever").GetComponent<Forever>().newpositionboat;
+            GameObject.Find("Forever").GetComponent<Forever>().isrevivedboat = false;
+        }
+    }
 
     // Start is called before the first frame update
     void Start()
@@ -107,7 +118,7 @@ public class TestBoatController : MonoBehaviour
         transform.rotation = Quaternion.Lerp(transform.rotation, quaDir, Time.fixedDeltaTime * turnspeed);
     }
 
-    private void OnTriggerEnter(Collider other)
+    public void OnTriggerEnter(Collider other)
     {
         
         if ("Coin" == other.gameObject.tag)
@@ -133,6 +144,10 @@ public class TestBoatController : MonoBehaviour
             Time.timeScale = 0;
             GameObject canvas = GameObject.Find("DieUI");
             canvas.transform.Find("Panel").gameObject.SetActive(true);
+            if (GameObject.Find("Forever").GetComponent<Forever>().isrevivedbutton)
+            {
+                ButtonAnswer.SetActive(false);
+            }
             PlaySound(DefeatSound);
         }
 
@@ -156,6 +171,10 @@ public class TestBoatController : MonoBehaviour
                 Time.timeScale = 0;
                 GameObject canvas = GameObject.Find("DieUI");
                 canvas.transform.Find("Panel").gameObject.SetActive(true);
+                if (GameObject.Find("Forever").GetComponent<Forever>().isrevivedbutton)
+                {
+                    ButtonAnswer.SetActive(false);
+                }
                 PlaySound(DefeatSound);
             }
             
