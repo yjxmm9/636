@@ -8,57 +8,51 @@ public class WinUI : MonoBehaviour
     // Start is called before the first frame update
 
     public static int collectionCount;//已收集的收集品数目
+    public Animator pa;
+
+    public GameObject FinalAnim;
+    public GameObject Player;
+    public GameObject winUI;
+    public GameObject StarOneFailed;
+    public GameObject StarTwoFailed;
+    public GameObject StarThreeFailed;
+    public GameObject StarOne;
+    public GameObject StarTwo;
+    public GameObject StarThree;
+
 
     void Start()
     {
-        collectionCount = 0;//已收集的收集品数目初始化为0
+        collectionCount = 3;//已收集的收集品数目初始化为0
 
-        GameObject canvas = GameObject.Find("WinUI");
-        canvas.transform.Find("Panel").gameObject.SetActive(false);
-        canvas.transform.Find("StarOneFailed").gameObject.SetActive(false);
-        canvas.transform.Find("StarTwoFailed").gameObject.SetActive(false);
-        canvas.transform.Find("StarThreeFailed").gameObject.SetActive(false);
-        canvas.transform.Find("StarOne").gameObject.SetActive(false);
-        canvas.transform.Find("StarTwo").gameObject.SetActive(false);
-        canvas.transform.Find("StarThree").gameObject.SetActive(false);
+        //GameObject canvas = GameObject.Find("WinUI");
+        //canvas.transform.Find("Panel").gameObject.SetActive(false);
+        //canvas.transform.Find("StarOneFailed").gameObject.SetActive(false);
+        //canvas.transform.Find("StarTwoFailed").gameObject.SetActive(false);
+        //canvas.transform.Find("StarThreeFailed").gameObject.SetActive(false);
+        //canvas.transform.Find("StarOne").gameObject.SetActive(false);
+        //canvas.transform.Find("StarTwo").gameObject.SetActive(false);
+        //canvas.transform.Find("StarThree").gameObject.SetActive(false);
+        
+
     }
 
     private void OnTriggerEnter(Collider other)
     {
-        GameObject canvas = GameObject.Find("WinUI");
-        canvas.transform.Find("Panel").gameObject.SetActive(true);
-        if (collectionCount == 0)
-        {
-            canvas.transform.Find("StarOneFailed").gameObject.SetActive(true);
-            canvas.transform.Find("StarTwoFailed").gameObject.SetActive(true);
-            canvas.transform.Find("StarThreeFailed").gameObject.SetActive(true);
-        }
-        if (collectionCount == 1)
-        {
-            canvas.transform.Find("StarOne").gameObject.SetActive(true);
-            canvas.transform.Find("StarTwoFailed").gameObject.SetActive(true);
-            canvas.transform.Find("StarThreeFailed").gameObject.SetActive(true);
-        }
-        if (collectionCount == 2)
-        {
-            canvas.transform.Find("StarOne").gameObject.SetActive(true);
-            canvas.transform.Find("StarTwo").gameObject.SetActive(true);
-            canvas.transform.Find("StarThreeFailed").gameObject.SetActive(true);
-        }
-        if (collectionCount == 3)
-        {
-            canvas.transform.Find("StarOne").gameObject.SetActive(true);
-            canvas.transform.Find("StarTwo").gameObject.SetActive(true);
-            canvas.transform.Find("StarThree").gameObject.SetActive(true);
-        }
+        
+        Invoke("ActivateUI", 2f);
+        Player.SetActive(false);
+        FinalAnim.SetActive(true);
+        pa.SetBool("Win", true);
+        
     }
 
-    private void OnTriggerExit(Collider other)
-    {
-        Rewind();
-        GameObject canvas = GameObject.Find("WinUI");
-        canvas.transform.Find("Panel").gameObject.SetActive(false);
-    }
+    //private void OnTriggerExit(Collider other)
+    //{
+    //    //Rewind();
+    //    GameObject canvas = GameObject.Find("WinUI");
+    //    canvas.transform.Find("Panel").gameObject.SetActive(false);
+    //}
 
 
     private void Rewind()
@@ -71,6 +65,42 @@ public class WinUI : MonoBehaviour
         player.GetComponent<PlayerController>().speed += 2;
     }
 
+    private void ActivateUI()
+    {
+        winUI.SetActive(true);
+        StarOne.SetActive(false);
+        StarTwo.SetActive(false);
+        StarThree.SetActive(false);
+        StarOneFailed.SetActive(false);
+        StarTwoFailed.SetActive(false);
+        StarThreeFailed.SetActive(false);
+        if (collectionCount == 0)
+        {
+            StarOneFailed.SetActive(true);
+            StarTwoFailed.SetActive(true);
+            StarThreeFailed.SetActive(true);
 
+        }
+        if (collectionCount == 1)
+        {
+            StarOne.SetActive(true);
+            StarTwoFailed.SetActive(true);
+            StarThreeFailed.SetActive(true);
+            
+        }
+        if (collectionCount == 2)
+        {
+            StarOne.SetActive(true);
+            StarTwo.SetActive(true);
+            StarThreeFailed.SetActive(true);
+        }
+        if (collectionCount == 3)
+        {
+            StarOne.SetActive(true);
+            StarTwo.SetActive(true);
+            StarThree.SetActive(true);
+        }
+
+    }
 
 }

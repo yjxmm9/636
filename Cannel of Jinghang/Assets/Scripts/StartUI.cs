@@ -7,12 +7,14 @@ public class StartUI : MonoBehaviour
 {
 
     public GameObject SettingUI;
+    public GameObject PlayUI;
     
     // Start is called before the first frame update
     void Start()
     {
         
         SettingUI.SetActive(false);//将其初始化设置为不显示
+        PlayUI.SetActive(false);
     }
 
     // Update is called once per frame
@@ -42,5 +44,8 @@ public class StartUI : MonoBehaviour
         UnityEngine.SceneManagement.SceneManager.LoadScene(0);
     }
 
-    
+    public void PlayCheck()
+    {
+        PlayUI.SetActive(true);
+    }
 }
