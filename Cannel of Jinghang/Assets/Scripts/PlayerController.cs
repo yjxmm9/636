@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PlayerController : MonoBehaviour
 {
@@ -25,6 +26,7 @@ public class PlayerController : MonoBehaviour
     public bool isShield;//护盾
     public GameObject testBoat;//传入testBoat物体
     public GameObject ButtonAnswer;
+    public GameObject CountUI;
 
     private Animator pa;
 
@@ -33,12 +35,17 @@ public class PlayerController : MonoBehaviour
     public AudioClip JumpSound;
     public AudioClip BoatSound;
     public AudioClip DefeatSound;
+    public AudioClip collectSound;
+
+    public Text DieScore;
 
     private void Awake()
     {
         if (GameObject.Find("Forever").GetComponent<Forever>().isrevivedplayer)
         {
             transform.position = GameObject.Find("Forever").GetComponent<Forever>().newpositionplayer;
+            UIManager.Instance.score= GameObject.Find("Forever").GetComponent<Forever>().lastScore;
+            //Debug.Log(GameObject.Find("Forever").GetComponent<Forever>().collectNum);
             GameObject.Find("Forever").GetComponent<Forever>().isrevivedplayer = false;
         }
     }
@@ -66,6 +73,7 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        //Debug.Log(WinUI.collectionCount);
         //jumpTimer += Time.deltaTime;
         if (CheckGrounded())
         {//When Junkochan is on the ground
@@ -107,10 +115,6 @@ public class PlayerController : MonoBehaviour
         {
             boatAudioSource.Stop();
             PlayerPrefs.SetInt("lasts", UIManager.Instance.score);
-            if (PlayerPrefs.GetInt("bests", 0) < UIManager.Instance.score)
-            {
-                PlayerPrefs.SetInt("bests", UIManager.Instance.score);
-            }
         }
     }
 
@@ -125,9 +129,11 @@ public class PlayerController : MonoBehaviour
                 Time.timeScale = 0;
                 GameObject canvas = GameObject.Find("DieUI");
                 canvas.transform.Find("Panel").gameObject.SetActive(true);
+            DieScore.text ="得分:"+ UIManager.Instance.score;
             if (GameObject.Find("Forever").GetComponent<Forever>().isrevivedbutton)
             {
                 ButtonAnswer.SetActive(false);
+                GameObject.Find("Forever").GetComponent<Forever>().isrevivedbutton = false;
             }
             //Debug.Log(UIManager.Instance.revivetime);
             //if (UIManager.Instance.revivetime != 0)
@@ -137,6 +143,14 @@ public class PlayerController : MonoBehaviour
             PlaySound(DefeatSound);
             
 
+        }
+        if (other.tag == "Collection")
+        {
+            WinUI.collectionCount += 1;
+            UIManager.Instance.UpdateUI(100);
+            //Debug.Log(WinUI.collectionCount);
+            Destroy(other.gameObject);//在收集到之后摧毁该物体
+            PlaySound(collectSound);
         }
     }
 
@@ -188,7 +202,11 @@ public class PlayerController : MonoBehaviour
 
     private void Score()
     {
-        UIManager.Instance.UpdateUI(1);
+        if (!CountUI.GetComponent<CountDown>().iscounting)
+        {
+            UIManager.Instance.UpdateUI(1);
+        }
+        
     }
 
     bool CheckGrounded()

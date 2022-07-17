@@ -28,7 +28,8 @@ public class WinUI : MonoBehaviour
     void Start()
     {
         collectionCount = 0;//已收集的收集品数目初始化为0
-
+        collectionCount = GameObject.Find("Forever").GetComponent<Forever>().collectNum;
+        //Debug.Log(collectionCount);
         //GameObject canvas = GameObject.Find("WinUI");
         //canvas.transform.Find("Panel").gameObject.SetActive(false);
         //canvas.transform.Find("StarOneFailed").gameObject.SetActive(false);
@@ -37,7 +38,7 @@ public class WinUI : MonoBehaviour
         //canvas.transform.Find("StarOne").gameObject.SetActive(false);
         //canvas.transform.Find("StarTwo").gameObject.SetActive(false);
         //canvas.transform.Find("StarThree").gameObject.SetActive(false);
-        
+
 
     }
 
@@ -71,7 +72,7 @@ public class WinUI : MonoBehaviour
 
     private void ActivateUI()
     {
-        
+        //Debug.Log(collectionCount);
         winUI.SetActive(true);
         StarOne.SetActive(false);
         StarTwo.SetActive(false);

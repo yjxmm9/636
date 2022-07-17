@@ -12,6 +12,7 @@ TagManager:
   - RiverBank
   - Speed
   - TestBoat
+  - Collection
   layers:
   - Default
   - TransparentFX

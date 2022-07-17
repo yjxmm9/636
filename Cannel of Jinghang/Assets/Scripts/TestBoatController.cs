@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
 public class TestBoatController : MonoBehaviour
@@ -31,6 +32,11 @@ public class TestBoatController : MonoBehaviour
     public AudioSource audiosource;
     public AudioClip DefeatSound;
     public GameObject ButtonAnswer;
+    public AudioClip collectSound;
+
+    public Text DieScore;
+
+
 
 
     private void Awake()
@@ -144,9 +150,11 @@ public class TestBoatController : MonoBehaviour
             Time.timeScale = 0;
             GameObject canvas = GameObject.Find("DieUI");
             canvas.transform.Find("Panel").gameObject.SetActive(true);
+            DieScore.text = "得分:" + UIManager.Instance.score;
             if (GameObject.Find("Forever").GetComponent<Forever>().isrevivedbutton)
             {
                 ButtonAnswer.SetActive(false);
+                GameObject.Find("Forever").GetComponent<Forever>().isrevivedbutton = false;
             }
             PlaySound(DefeatSound);
         }
@@ -171,16 +179,26 @@ public class TestBoatController : MonoBehaviour
                 Time.timeScale = 0;
                 GameObject canvas = GameObject.Find("DieUI");
                 canvas.transform.Find("Panel").gameObject.SetActive(true);
+                DieScore.text = "得分:" + UIManager.Instance.score;
                 if (GameObject.Find("Forever").GetComponent<Forever>().isrevivedbutton)
                 {
                     ButtonAnswer.SetActive(false);
+                    GameObject.Find("Forever").GetComponent<Forever>().isrevivedbutton = false;
                 }
                 PlaySound(DefeatSound);
             }
             
         }
 
-        
+        //if (other.tag == "Collection")
+        //{
+        //    WinUI.collectionCount += 1;
+        //    UIManager.Instance.UpdateUI(100);
+        //    Destroy(other.gameObject);//在收集到之后摧毁该物体
+        //    PlaySound(collectSound);
+        //}
+
+
     }
 
     private void Magnet()

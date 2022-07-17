@@ -11,6 +11,7 @@ public class CountDown : MonoBehaviour
     public GameObject TestBoat;
     public GameObject Player;
     private float speed;
+    public bool iscounting;
 
     // Start is called before the first frame update
     void Start()
@@ -33,9 +34,9 @@ public class CountDown : MonoBehaviour
         
     }
     
-    IEnumerator CountDownIE()
+    public IEnumerator CountDownIE()
     {
-        
+        iscounting = true;
         CountDownThree.SetActive(true);
         Time.timeScale = 1;
         yield return new WaitForSeconds(1);
@@ -48,10 +49,10 @@ public class CountDown : MonoBehaviour
 
         yield return new WaitForSeconds(1);
         CountDownOne.SetActive(false);
-
+        
         TestBoat.GetComponent<TestBoatController>().speed = speed;
         Player.GetComponent<PlayerController>().speed = speed;//复位速度，开始游戏
-
+        iscounting = false;
     }
 
 }

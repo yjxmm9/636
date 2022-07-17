@@ -16,11 +16,13 @@ public class UIManager : MonoBehaviour
     public GameObject answerUI;
     public GameObject ButtonAnswer;
     public GameObject Forever;
+    public GameObject PauseUI;
+    public GameObject CountUI;
 
     static Vector3 newposition;
-    
+    private float speed;
 
-    public int revivetime=0;
+    //public int revivetime=0;
 
     public static UIManager Instance
     {
@@ -71,6 +73,23 @@ public class UIManager : MonoBehaviour
         AnswerUI.SetActive(true);
     }
 
+    public void Pause()
+    {
+        Time.timeScale = 0;
+        PauseUI.SetActive(true); 
+        speed = TestBoat.GetComponent<TestBoatController>().speed;//获取现在的船速度
+        TestBoat.GetComponent<TestBoatController>().speed = 0;//将船速设为=0，即达到暂停而timescale不为0
+        Player.GetComponent<PlayerController>().speed = 0;//将Player速度设为0
+    }
+
+    public void Continue()
+    {
+        PauseUI.SetActive(false);
+        StartCoroutine(CountUI.GetComponent<CountDown>().CountDownIE());
+        Player.GetComponent<PlayerController>().boatAudioSource.Play();
+
+    }
+
     public void Revive()
     {
         //GameObject testBoat = GameObject.Find("TestBoat");
@@ -84,6 +103,9 @@ public class UIManager : MonoBehaviour
         GameObject.Find("Forever").GetComponent<Forever>().isrevivedplayer = true;
         GameObject.Find("Forever").GetComponent<Forever>().isrevivedboat = true;
         GameObject.Find("Forever").GetComponent<Forever>().isrevivedbutton = true;
+        GameObject.Find("Forever").GetComponent<Forever>().lastScore = score;
+        GameObject.Find("Forever").GetComponent<Forever>().collectNum = WinUI.collectionCount;
+        //Debug.Log(GameObject.Find("Forever").GetComponent<Forever>().collectNum);
         UnityEngine.SceneManagement.SceneManager.LoadScene(1);
         //Instantiate(Player, newposition, Quaternion.identity);
         //Instantiate(TestBoat, newposition, Quaternion.identity);
@@ -98,6 +120,8 @@ public class UIManager : MonoBehaviour
         //Destroy(ButtonAnswer);
         
     }
+
+
 
     //public void AfterRevive()
     //{

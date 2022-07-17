@@ -10,6 +10,8 @@ public class Forever : MonoBehaviour
     public bool isrevivedplayer=false;
     public bool isrevivedboat = false;
     public bool isrevivedbutton = false;
+    public int lastScore;
+    public int collectNum=0;
     void Start()
     {
         
