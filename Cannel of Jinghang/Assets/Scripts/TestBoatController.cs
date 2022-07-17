@@ -47,7 +47,7 @@ public class TestBoatController : MonoBehaviour
     {
         //myTrans = this.transform;
         //StartCoroutine(Rise());
-        Time.timeScale = 1;
+        //Time.timeScale = 1;
         GameObject canvas = GameObject.Find("DieUI");
         canvas.transform.Find("Panel").gameObject.SetActive(false);
     }

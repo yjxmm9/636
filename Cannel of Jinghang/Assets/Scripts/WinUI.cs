@@ -59,7 +59,7 @@ public class WinUI : MonoBehaviour
     //}
 
 
-    private void Rewind()
+    /*private void Rewind()
     {
         GameObject testBoat = GameObject.Find("TestBoat");
         GameObject player = GameObject.Find("JunkoChan");
@@ -67,7 +67,7 @@ public class WinUI : MonoBehaviour
         testBoat.GetComponent<TestBoatController>().speed += 2;
         player.transform.position = new Vector3(player.transform.position.x, 2, 0);
         player.GetComponent<PlayerController>().speed += 2;
-    }
+    }*/
 
     private void ActivateUI()
     {
