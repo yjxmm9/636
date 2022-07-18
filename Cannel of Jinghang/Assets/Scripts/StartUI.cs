@@ -71,7 +71,7 @@ public class StartUI : MonoBehaviour
 
     public void Collect()
     {
-        CollectionUI.SetActive(true);//打开收集品UI的第一页
+        CollectionUI.transform.Find("Panel").gameObject.SetActive(true);//打开收集品UI的第一页
         MainMenu.SetActive(false);//关闭MainMene
         if (PlayerPrefs.GetInt("haveCollect1_1",0) == 1)
         {
