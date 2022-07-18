@@ -8,6 +8,7 @@ public class StartUI : MonoBehaviour
 
     public GameObject SettingUI;
     public GameObject PlayUI;
+    public GameObject MainMenu;
     
     // Start is called before the first frame update
     void Start()
@@ -48,4 +49,52 @@ public class StartUI : MonoBehaviour
     {
         PlayUI.SetActive(true);
     }
+
+    public void Collect()
+    {
+        GameObject CollectionUI = GameObject.Find("CollectionOneUI");
+        CollectionUI.transform.Find("Panel").gameObject.SetActive(true);//打开收集品UI的第一页
+        MainMenu.SetActive(false);//关闭MainMene
+
+    }
+
+    public void NextOnOne()
+    {
+        GameObject CollectionOneUI = GameObject.Find("CollectionOneUI");
+        CollectionOneUI.transform.Find("Panel").gameObject.SetActive(false);//关闭收集品UI的第一页
+        GameObject CollectionTwoUI = GameObject.Find("CollectionTwoUI");
+        CollectionTwoUI.transform.Find("Panel").gameObject.SetActive(true);//打开收集品UI的第二页
+    }
+
+    public void NextOnTwo()
+    {
+        GameObject CollectionTwoUI = GameObject.Find("CollectionTwoUI");
+        CollectionTwoUI.transform.Find("Panel").gameObject.SetActive(false);//关闭收集品UI的第二页
+        GameObject CollectionThreeUI = GameObject.Find("CollectionThreeUI");
+        CollectionThreeUI.transform.Find("Panel").gameObject.SetActive(true);//打开收集品UI的第三页
+    }
+
+    public void ReturnButton()
+    {
+        GameObject CollectionUI = GameObject.Find("CollectionOneUI");
+        CollectionUI.transform.Find("Panel").gameObject.SetActive(false);//关闭收集品UI的第一页
+        MainMenu.SetActive(true);//打开MainMene
+    }
+
+    public void ReturnOnTwo()
+    {
+        GameObject CollectionOneUI = GameObject.Find("CollectionOneUI");
+        CollectionOneUI.transform.Find("Panel").gameObject.SetActive(true);//打开收集品UI的第一页
+        GameObject CollectionTwoUI = GameObject.Find("CollectionTwoUI");
+        CollectionTwoUI.transform.Find("Panel").gameObject.SetActive(false);//关闭收集品UI的第二页
+    }
+
+    public void ReturnOnThree()
+    {
+        GameObject CollectionTwoUI = GameObject.Find("CollectionTwoUI");
+        CollectionTwoUI.transform.Find("Panel").gameObject.SetActive(true);//打开收集品UI的第二页
+        GameObject CollectionThreeUI = GameObject.Find("CollectionThreeUI");
+        CollectionThreeUI.transform.Find("Panel").gameObject.SetActive(false);//关闭收集品UI的第三页
+    }
+
 }

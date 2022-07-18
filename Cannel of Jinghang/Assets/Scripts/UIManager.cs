@@ -18,6 +18,7 @@ public class UIManager : MonoBehaviour
     public GameObject Forever;
     public GameObject PauseUI;
     public GameObject CountUI;
+    
 
     static Vector3 newposition;
     private float speed;
@@ -89,6 +90,38 @@ public class UIManager : MonoBehaviour
         Player.GetComponent<PlayerController>().boatAudioSource.Play();
 
     }
+
+    public void Collect()
+    {
+        GameObject CollectionUI = GameObject.Find("CollectionUI");
+        CollectionUI.transform.Find("Panel").gameObject.SetActive(true);
+        GameObject.Find("WinUI").gameObject.transform.Find("Panel").gameObject.SetActive(false);
+        
+    }
+
+    public void ReturnButton()
+    {
+        GameObject.Find("WinUI").gameObject.transform.Find("Panel").gameObject.SetActive(true);
+        GameObject CollectionUI = GameObject.Find("CollectionUI");
+        CollectionUI.transform.Find("Panel").gameObject.SetActive(false);
+    }
+
+
+    public void DetailsOfOne()
+    {
+
+    }
+
+    public void DetailsOfTwo()
+    {
+
+    }
+
+    public void DetailsOfThree()
+    {
+
+    }
+
 
     public void Revive()
     {
