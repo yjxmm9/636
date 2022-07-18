@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using System;
 
 public class PlayerController : MonoBehaviour
 {
@@ -38,6 +39,8 @@ public class PlayerController : MonoBehaviour
     public AudioClip collectSound;
 
     public Text DieScore;
+
+    
 
     private void Awake()
     {
@@ -144,14 +147,36 @@ public class PlayerController : MonoBehaviour
             
 
         }
-        if (other.tag == "Collection")
+        if (other.tag == "Collection1")
         {
             WinUI.collectionCount += 1;
-            UIManager.Instance.UpdateUI(100);
+            UIManager.Instance.UpdateUI(500);
             //Debug.Log(WinUI.collectionCount);
             Destroy(other.gameObject);//在收集到之后摧毁该物体
             PlaySound(collectSound);
+            PlayerPrefs.SetInt("haveCollect1_1", 1);
+            
+            
         }
+        if (other.tag == "Collection2")
+        {
+            WinUI.collectionCount += 1;
+            UIManager.Instance.UpdateUI(500);
+            //Debug.Log(WinUI.collectionCount);
+            Destroy(other.gameObject);//在收集到之后摧毁该物体
+            PlaySound(collectSound);
+            PlayerPrefs.SetInt("haveCollect1_2", 1);
+        }
+        if (other.tag == "Collection3")
+        {
+            WinUI.collectionCount += 1;
+            UIManager.Instance.UpdateUI(500);
+            //Debug.Log(WinUI.collectionCount);
+            Destroy(other.gameObject);//在收集到之后摧毁该物体
+            PlaySound(collectSound);
+            PlayerPrefs.SetInt("haveCollect1_3", 1);
+        }
+
     }
 
 

@@ -18,7 +18,14 @@ public class UIManager : MonoBehaviour
     public GameObject Forever;
     public GameObject PauseUI;
     public GameObject CountUI;
-    
+    public GameObject Collect1;
+    public GameObject Collect2;
+    public GameObject Collect3;
+    public GameObject noCollect1;
+    public GameObject noCollect2;
+    public GameObject noCollect3;
+    public GameObject CollectionUI;
+
 
     static Vector3 newposition;
     private float speed;
@@ -93,10 +100,37 @@ public class UIManager : MonoBehaviour
 
     public void Collect()
     {
-        GameObject CollectionUI = GameObject.Find("CollectionUI");
-        CollectionUI.transform.Find("Panel").gameObject.SetActive(true);
-        GameObject.Find("WinUI").gameObject.transform.Find("Panel").gameObject.SetActive(false);
-        
+        CollectionUI.SetActive(true);
+        if (PlayerPrefs.GetInt("haveCollect1_1")==1)
+        {
+            Collect1.SetActive(true);
+            noCollect1.SetActive(false);
+        }
+        else
+        {
+            Collect1.SetActive(false);
+            noCollect1.SetActive(true);
+        }
+        if (PlayerPrefs.GetInt("haveCollect1_2") == 1)
+        {
+            Collect2.SetActive(true);
+            noCollect2.SetActive(false);
+        }
+        else
+        {
+            Collect2.SetActive(false);
+            noCollect2.SetActive(true);
+        }
+        if (PlayerPrefs.GetInt("haveCollect1_3") == 1)
+        {
+            Collect3.SetActive(true);
+            noCollect3.SetActive(false);
+        }
+        else
+        {
+            Collect3.SetActive(false);
+            noCollect3.SetActive(true);
+        }
     }
 
     public void ReturnButton()
