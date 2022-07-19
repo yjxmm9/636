@@ -100,7 +100,8 @@ public class UIManager : MonoBehaviour
 
     public void Collect()//打开收集界面
     {
-        CollectionUI.SetActive(true);
+        CollectionUI.transform.Find("Panel").gameObject.SetActive(true);
+        GameObject.Find("WinUI").gameObject.transform.Find("Panel").gameObject.SetActive(false);
         if (SceneManager.GetActiveScene().buildIndex == 2)
         {
             if (PlayerPrefs.GetInt("haveCollect1_1") == 1)
