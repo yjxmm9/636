@@ -29,7 +29,6 @@ public class StartUI : MonoBehaviour
     public GameObject noCollect3_2;
     public GameObject noCollect3_3;
 
-    // Start is called before the first frame update
     void Start()
     {
         
@@ -37,15 +36,9 @@ public class StartUI : MonoBehaviour
         PlayUI.SetActive(false);
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
     public void StartGame()
     {
-        UnityEngine.SceneManagement.SceneManager.LoadScene(3);
+        UnityEngine.SceneManagement.SceneManager.LoadScene(1);
     }
 
     public void Quit()

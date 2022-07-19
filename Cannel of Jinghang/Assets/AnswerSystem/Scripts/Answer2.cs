@@ -2,7 +2,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 
-public class Answer : MonoBehaviour
+public class Answer2 : MonoBehaviour
 {
     //读取文档
     string[][] ArrayX;//题目数据
@@ -60,7 +60,7 @@ public class Answer : MonoBehaviour
         
         //读取csv二进制文件  
 
-        TextAsset binAsset = Resources.Load("YW1", typeof(TextAsset)) as TextAsset;
+        TextAsset binAsset = Resources.Load("YW3", typeof(TextAsset)) as TextAsset;
         //读取每一行的内容  
         lineArray = binAsset.text.Split('\r');
         //创建二维数组  

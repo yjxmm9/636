@@ -13,7 +13,6 @@ public class CountDown : MonoBehaviour
     private float speed;
     public bool iscounting;
 
-    // Start is called before the first frame update
     void Start()
     {
         
@@ -28,12 +27,6 @@ public class CountDown : MonoBehaviour
         StartCoroutine(CountDownIE()) ;//开始倒计时协程
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-    
     public IEnumerator CountDownIE()
     {
         iscounting = true;

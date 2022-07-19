@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class UIManager : MonoBehaviour
 {
@@ -26,11 +27,8 @@ public class UIManager : MonoBehaviour
     public GameObject noCollect3;
     public GameObject CollectionUI;
 
-
     static Vector3 newposition;
     private float speed;
-
-    //public int revivetime=0;
 
     public static UIManager Instance
     {
@@ -47,41 +45,43 @@ public class UIManager : MonoBehaviour
         
     }
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
-    public void UpdateUI(int s)
+    public void UpdateUI(int s)//游戏中得分刷新功能
     {
         score += s;
         ScoreText.text = "得分："+score;
     }
 
-    public void Again()
+    public void Again()//再来一次按钮
     {
         Time.timeScale = 1;
-        UnityEngine.SceneManagement.SceneManager.LoadScene(1);//TODO
+        WinUI.collectionCount = 0;
+        if (SceneManager.GetActiveScene().buildIndex==2)
+        {
+            UnityEngine.SceneManagement.SceneManager.LoadScene(2);
+        }
+        else if(SceneManager.GetActiveScene().buildIndex == 3)
+        {
+            UnityEngine.SceneManagement.SceneManager.LoadScene(3);
+        }
+        else if(SceneManager.GetActiveScene().buildIndex == 4)
+        {
+            UnityEngine.SceneManagement.SceneManager.LoadScene(4);
+        }
+        
     }
 
-    public void Menu()
+    public void Menu()//菜单按钮
     {
+        Destroy(Forever);
         UnityEngine.SceneManagement.SceneManager.LoadScene(0);
     }
 
-    public void Answer()
+    public void Answer()//回答问题复活按钮
     {
         AnswerUI.SetActive(true);
     }
 
-    public void Pause()
+    public void Pause()//暂停按钮
     {
         Time.timeScale = 0;
         PauseUI.SetActive(true); 
@@ -90,7 +90,7 @@ public class UIManager : MonoBehaviour
         Player.GetComponent<PlayerController>().speed = 0;//将Player速度设为0
     }
 
-    public void Continue()
+    public void Continue()//继续按钮
     {
         PauseUI.SetActive(false);
         StartCoroutine(CountUI.GetComponent<CountDown>().CountDownIE());
@@ -98,42 +98,112 @@ public class UIManager : MonoBehaviour
 
     }
 
-    public void Collect()
+    public void Collect()//打开收集界面
     {
         CollectionUI.SetActive(true);
-        if (PlayerPrefs.GetInt("haveCollect1_1")==1)
+        if (SceneManager.GetActiveScene().buildIndex == 2)
         {
-            Collect1.SetActive(true);
-            noCollect1.SetActive(false);
+            if (PlayerPrefs.GetInt("haveCollect1_1") == 1)
+            {
+                Collect1.SetActive(true);
+                noCollect1.SetActive(false);
+            }
+            else
+            {
+                Collect1.SetActive(false);
+                noCollect1.SetActive(true);
+            }
+            if (PlayerPrefs.GetInt("haveCollect1_2") == 1)
+            {
+                Collect2.SetActive(true);
+                noCollect2.SetActive(false);
+            }
+            else
+            {
+                Collect2.SetActive(false);
+                noCollect2.SetActive(true);
+            }
+            if (PlayerPrefs.GetInt("haveCollect1_3") == 1)
+            {
+                Collect3.SetActive(true);
+                noCollect3.SetActive(false);
+            }
+            else
+            {
+                Collect3.SetActive(false);
+                noCollect3.SetActive(true);
+            }
         }
-        else
+        else if (SceneManager.GetActiveScene().buildIndex == 3)
         {
-            Collect1.SetActive(false);
-            noCollect1.SetActive(true);
+            if (PlayerPrefs.GetInt("haveCollect2_1") == 1)
+            {
+                Collect1.SetActive(true);
+                noCollect1.SetActive(false);
+            }
+            else
+            {
+                Collect1.SetActive(false);
+                noCollect1.SetActive(true);
+            }
+            if (PlayerPrefs.GetInt("haveCollect2_2") == 1)
+            {
+                Collect2.SetActive(true);
+                noCollect2.SetActive(false);
+            }
+            else
+            {
+                Collect2.SetActive(false);
+                noCollect2.SetActive(true);
+            }
+            if (PlayerPrefs.GetInt("haveCollect2_3") == 1)
+            {
+                Collect3.SetActive(true);
+                noCollect3.SetActive(false);
+            }
+            else
+            {
+                Collect3.SetActive(false);
+                noCollect3.SetActive(true);
+            }
         }
-        if (PlayerPrefs.GetInt("haveCollect1_2") == 1)
+        else if (SceneManager.GetActiveScene().buildIndex == 4)
         {
-            Collect2.SetActive(true);
-            noCollect2.SetActive(false);
+            if (PlayerPrefs.GetInt("haveCollect3_1") == 1)
+            {
+                Collect1.SetActive(true);
+                noCollect1.SetActive(false);
+            }
+            else
+            {
+                Collect1.SetActive(false);
+                noCollect1.SetActive(true);
+            }
+            if (PlayerPrefs.GetInt("haveCollect3_2") == 1)
+            {
+                Collect2.SetActive(true);
+                noCollect2.SetActive(false);
+            }
+            else
+            {
+                Collect2.SetActive(false);
+                noCollect2.SetActive(true);
+            }
+            if (PlayerPrefs.GetInt("haveCollect3_3") == 1)
+            {
+                Collect3.SetActive(true);
+                noCollect3.SetActive(false);
+            }
+            else
+            {
+                Collect3.SetActive(false);
+                noCollect3.SetActive(true);
+            }
         }
-        else
-        {
-            Collect2.SetActive(false);
-            noCollect2.SetActive(true);
-        }
-        if (PlayerPrefs.GetInt("haveCollect1_3") == 1)
-        {
-            Collect3.SetActive(true);
-            noCollect3.SetActive(false);
-        }
-        else
-        {
-            Collect3.SetActive(false);
-            noCollect3.SetActive(true);
-        }
+        
     }
 
-    public void ReturnButton()
+    public void ReturnButton()//收集界面返回结算界面
     {
         GameObject.Find("WinUI").gameObject.transform.Find("Panel").gameObject.SetActive(true);
         GameObject CollectionUI = GameObject.Find("CollectionUI");
@@ -156,15 +226,20 @@ public class UIManager : MonoBehaviour
 
     }
 
-
-    public void Revive()
+    public void NextLevel1()
     {
-        //GameObject testBoat = GameObject.Find("TestBoat");
-        //GameObject player = GameObject.Find("JunkoChan");
+        Destroy(Forever);
+        UnityEngine.SceneManagement.SceneManager.LoadScene(3);
+    }
 
-        //TestBoat.transform.position = new Vector3(testBoat.transform.position.x, 0, testBoat.transform.position.z-20);
-        //Player.transform.position = new Vector3(player.transform.position.x, 2, player.transform.position.z-20);
+    public void NextLevel2()
+    {
+        Destroy(Forever);
+        UnityEngine.SceneManagement.SceneManager.LoadScene(4);
+    }
 
+    public void Revive()//复活
+    {
         GameObject.Find("Forever").GetComponent<Forever>().newpositionplayer = new Vector3(Player.transform.position.x, 0,Player.transform.position.z) - 20 * Vector3.forward;
         GameObject.Find("Forever").GetComponent<Forever>().newpositionboat = TestBoat.transform.position - 20 * Vector3.forward;
         GameObject.Find("Forever").GetComponent<Forever>().isrevivedplayer = true;
@@ -172,43 +247,21 @@ public class UIManager : MonoBehaviour
         GameObject.Find("Forever").GetComponent<Forever>().isrevivedbutton = true;
         GameObject.Find("Forever").GetComponent<Forever>().lastScore = score;
         GameObject.Find("Forever").GetComponent<Forever>().collectNum = WinUI.collectionCount;
-        //Debug.Log(GameObject.Find("Forever").GetComponent<Forever>().collectNum);
-        UnityEngine.SceneManagement.SceneManager.LoadScene(1);
-        //Instantiate(Player, newposition, Quaternion.identity);
-        //Instantiate(TestBoat, newposition, Quaternion.identity);
-        //Destroy(Player);
-        //Destroy(TestBoat);
-        //Player.transform.position = newposition;
-        //TestBoat.transform.position = newposition;
-
-        //Time.timeScale = 1;
-        //AnswerUI.SetActive(false);
-        //DieUI.SetActive(false);
-        //Destroy(ButtonAnswer);
-        
+        if (SceneManager.GetActiveScene().buildIndex == 2)
+        {
+            UnityEngine.SceneManagement.SceneManager.LoadScene(2);
+        }
+        else if (SceneManager.GetActiveScene().buildIndex == 3)
+        {
+            UnityEngine.SceneManagement.SceneManager.LoadScene(3);
+        }
+        else if (SceneManager.GetActiveScene().buildIndex == 4)
+        {
+            UnityEngine.SceneManagement.SceneManager.LoadScene(4);
+        }
     }
 
 
 
-    //public void AfterRevive()
-    //{
-    //    Time.timeScale = 0;
-    //    Player.transform.position = newposition;
-    //    TestBoat.transform.position = newposition;
-    //    AnswerUI.SetActive(false);
-    //    DieUI.SetActive(false);
-    //    Destroy(ButtonAnswer);
-    //    Time.timeScale = 1;
-        
-    //}
-
-    //private void CheckForward(GameObject go)
-    //{//Judge whether Junkochan is on the ground or not
-    //    Ray ray = new Ray(go.transform.position + Vector3.up , Vector3.forward * 1f);
-    //    RaycastHit hit;
-    //    if (Physics.Raycast(ray,out hit))
-    //    {
-    //        Destroy(hit.collider.gameObject);
-    //    }
-    //}
+    
 }

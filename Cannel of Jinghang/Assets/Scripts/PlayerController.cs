@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 using System;
 
 public class PlayerController : MonoBehaviour
@@ -13,7 +14,6 @@ public class PlayerController : MonoBehaviour
     private Vector3 jump;
     public float jumpForce = 2f;
 
-    //public float jumpTimer;
     private bool isjumping = false;
     public int gravity = -35;
     private float Height;
@@ -44,17 +44,16 @@ public class PlayerController : MonoBehaviour
 
     private void Awake()
     {
-        if (GameObject.Find("Forever").GetComponent<Forever>().isrevivedplayer)
+        if (GameObject.Find("Forever").GetComponent<Forever>().isrevivedplayer)//复活以后读取复活前的参数
         {
             transform.position = GameObject.Find("Forever").GetComponent<Forever>().newpositionplayer;
             UIManager.Instance.score= GameObject.Find("Forever").GetComponent<Forever>().lastScore;
-            //Debug.Log(GameObject.Find("Forever").GetComponent<Forever>().collectNum);
+            WinUI.collectionCount = GameObject.Find("Forever").GetComponent<Forever>().collectNum;
             GameObject.Find("Forever").GetComponent<Forever>().isrevivedplayer = false;
         }
     }
 
 
-    // Start is called before the first frame update
     void Start()
     {
         rb = this.GetComponent<Rigidbody>();
@@ -73,12 +72,9 @@ public class PlayerController : MonoBehaviour
         boatAudioSource.Play();
     }
 
-    // Update is called once per frame
     void Update()
     {
-        //Debug.Log(WinUI.collectionCount);
-        //jumpTimer += Time.deltaTime;
-        if (CheckGrounded())
+        if (CheckGrounded())//落地状态
         {//When Junkochan is on the ground
             pa.SetBool("Grounded", true);//Set Junkochan's "Grounded" parameter in Animator component
             pa.SetBool("Jump", false);
@@ -90,16 +86,14 @@ public class PlayerController : MonoBehaviour
 
         Physics.gravity = new Vector3(0, gravity, 0);  // gravity= -35 其他的默认
 
-        if (Input.GetKeyDown(KeyCode.Space)&&CheckGrounded()&&!iscrouching)
+        if (Input.GetKeyDown(KeyCode.Space)&&CheckGrounded()&&!iscrouching)//跳跃
         {
             pa.SetBool("Jump", true);
             rb.AddForce(jump * jumpForce, ForceMode.Impulse);
             isjumping = true;
-            PlaySound(JumpSound);
-            //jumpTimer = 0;
-            
+            PlaySound(JumpSound);          
         }
-        if (!CheckGrounded() && transform.position.y - Height < 0)
+        if (!CheckGrounded() && transform.position.y - Height < 0)//判断下落
         {//When Junkochan is falling, tansit animation state from "Ascending" to "Falling"
             pa.SetBool("Fall", true);//Set Junkochan's "Run" parameter in Animator component
         }
@@ -110,14 +104,11 @@ public class PlayerController : MonoBehaviour
         }
         Height = transform.position.y;
 
-        isShield = testBoat.GetComponent<TestBoatController>().isShield;
+        Crouch();//下蹲
 
-        Crouch();
-
-        if (Time.timeScale==0)
+        if (Time.timeScale==0)//失败后结束船的bgm
         {
             boatAudioSource.Stop();
-            PlayerPrefs.SetInt("lasts", UIManager.Instance.score);
         }
     }
 
@@ -126,55 +117,79 @@ public class PlayerController : MonoBehaviour
     {
         
 
-        if (other.tag.Equals("Barrier"))
+        if (other.tag.Equals("Barrier"))//撞到障碍
         {
             
-                Time.timeScale = 0;
-                GameObject canvas = GameObject.Find("DieUI");
-                canvas.transform.Find("Panel").gameObject.SetActive(true);
+            Time.timeScale = 0;
+            GameObject canvas = GameObject.Find("DieUI");
+            canvas.transform.Find("Panel").gameObject.SetActive(true);
             DieScore.text ="得分:"+ UIManager.Instance.score;
             if (GameObject.Find("Forever").GetComponent<Forever>().isrevivedbutton)
             {
                 ButtonAnswer.SetActive(false);
                 GameObject.Find("Forever").GetComponent<Forever>().isrevivedbutton = false;
             }
-            //Debug.Log(UIManager.Instance.revivetime);
-            //if (UIManager.Instance.revivetime != 0)
-            //{
-            //    ButtonAnswer.SetActive(false);
-            //}
             PlaySound(DefeatSound);
             
 
         }
+        //撞到收集品
         if (other.tag == "Collection1")
         {
             WinUI.collectionCount += 1;
             UIManager.Instance.UpdateUI(500);
-            //Debug.Log(WinUI.collectionCount);
             Destroy(other.gameObject);//在收集到之后摧毁该物体
             PlaySound(collectSound);
-            PlayerPrefs.SetInt("haveCollect1_1", 1);
-            
-            
+            if (SceneManager.GetActiveScene().buildIndex == 2)
+            {
+                PlayerPrefs.SetInt("haveCollect1_1", 1);
+            }
+            else if (SceneManager.GetActiveScene().buildIndex == 3)
+            {
+                PlayerPrefs.SetInt("haveCollect2_1", 1);
+            }
+            else if (SceneManager.GetActiveScene().buildIndex == 4)
+            {
+                PlayerPrefs.SetInt("haveCollect3_1", 1);
+            }
         }
         if (other.tag == "Collection2")
         {
             WinUI.collectionCount += 1;
             UIManager.Instance.UpdateUI(500);
-            //Debug.Log(WinUI.collectionCount);
             Destroy(other.gameObject);//在收集到之后摧毁该物体
             PlaySound(collectSound);
-            PlayerPrefs.SetInt("haveCollect1_2", 1);
+            if (SceneManager.GetActiveScene().buildIndex == 2)
+            {
+                PlayerPrefs.SetInt("haveCollect1_2", 1);
+            }
+            else if (SceneManager.GetActiveScene().buildIndex == 3)
+            {
+                PlayerPrefs.SetInt("haveCollect2_2", 1);
+            }
+            else if (SceneManager.GetActiveScene().buildIndex == 4)
+            {
+                PlayerPrefs.SetInt("haveCollect3_2", 1);
+            }
         }
         if (other.tag == "Collection3")
         {
             WinUI.collectionCount += 1;
             UIManager.Instance.UpdateUI(500);
-            //Debug.Log(WinUI.collectionCount);
             Destroy(other.gameObject);//在收集到之后摧毁该物体
             PlaySound(collectSound);
-            PlayerPrefs.SetInt("haveCollect1_3", 1);
+            if (SceneManager.GetActiveScene().buildIndex == 2)
+            {
+                PlayerPrefs.SetInt("haveCollect1_3", 1);
+            }
+            else if (SceneManager.GetActiveScene().buildIndex == 3)
+            {
+                PlayerPrefs.SetInt("haveCollect2_3", 1);
+            }
+            else if (SceneManager.GetActiveScene().buildIndex == 4)
+            {
+                PlayerPrefs.SetInt("haveCollect3_3", 1);
+            }
         }
 
     }
@@ -201,7 +216,7 @@ public class PlayerController : MonoBehaviour
         transform.rotation = Quaternion.Lerp(transform.rotation, quaDir, Time.fixedDeltaTime * turnspeed);
     }
 
-    private void Crouch()
+    private void Crouch()//下蹲
     {
         if (Input.GetKeyDown(KeyCode.C)&&CheckGrounded()&&!isjumping)
         {
@@ -209,9 +224,6 @@ public class PlayerController : MonoBehaviour
             coll.height = collCrouchSize;
             coll.center = collCrouchOffset;
             iscrouching = true;
-            //coll.radius = collCrouchRadius;
-            
-            //transform.localScale = new Vector3(transform.localScale.x, transform.localScale.y/2, transform.localScale.z);
         }
         else if(Input.GetKeyUp(KeyCode.C) && CheckGrounded()&&!isjumping)
         {
@@ -219,13 +231,11 @@ public class PlayerController : MonoBehaviour
             coll.center = collStandOffset;
             coll.height = collStandSize;
             iscrouching = false;
-            //coll.radius = collStandRadius;
-            //transform.localScale = new Vector3(transform.localScale.x, transform.localScale.y*2, transform.localScale.z);
 
         }
     }
 
-    private void Score()
+    private void Score()//更新得分
     {
         if (!CountUI.GetComponent<CountDown>().iscounting)
         {
@@ -234,13 +244,13 @@ public class PlayerController : MonoBehaviour
         
     }
 
-    bool CheckGrounded()
+    bool CheckGrounded()//判断是否在地面的检测
     {//Judge whether Junkochan is on the ground or not
         Ray ray = new Ray(this.transform.position + Vector3.up * 0.05f, Vector3.down * 0.15f);//Shoot ray at 0.05f upper from Junkochan's feet position to the ground with its length of 0.1f
         return Physics.Raycast(ray, 0.15f);//If the ray hit the ground, return true
     }
 
-    public void PlaySound(AudioClip audioClip)
+    public void PlaySound(AudioClip audioClip)//播放音频
     {
         audioSource.PlayOneShot(audioClip, 0.25f);
     }
