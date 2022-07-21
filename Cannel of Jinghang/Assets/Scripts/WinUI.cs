@@ -32,6 +32,7 @@ public class WinUI : MonoBehaviour
         Player.SetActive(false);
         FinalAnim.SetActive(true);
         pa.SetBool("Win", true);
+        GameObject.Find("Forever").GetComponent<Forever>().isrevivedbutton = false;
         if (SceneManager.GetActiveScene().buildIndex == 2)
         {
             PlayerPrefs.SetInt("r1success", 1);
@@ -44,7 +45,6 @@ public class WinUI : MonoBehaviour
 
     private void ActivateUI()
     {
-        Debug.Log(collectionCount);
         winUI.SetActive(true);
         StarOne.SetActive(false);
         StarTwo.SetActive(false);
