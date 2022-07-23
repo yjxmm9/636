@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 5722150111688534028}
   m_Layer: 0
   m_Name: trenches-wire
-  m_TagString: Untagged
+  m_TagString: Barrier
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -26,9 +26,9 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5729923877349008436}
-  m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -9, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 2.5, y: 1.5, z: 1.9316137}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -91,8 +91,8 @@ BoxCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5729923877349008436}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 2.4003396, y: 1.2160549, z: 1.1313715}
-  m_Center: {x: 0.000000059604645, y: 0.572672, z: 0.00017431378}
+  m_Size: {x: 2.4003396, y: 1.2160549, z: 1.4229069}
+  m_Center: {x: 0.00000009536743, y: 0.57267207, z: -0.14559335}

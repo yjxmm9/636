@@ -10,5 +10,14 @@ public class TrainMove : MonoBehaviour
     void FixedUpdate()
     {
         transform.Translate(speed * Time.fixedDeltaTime, 0, 0);//ÏòÇ°ÒÆ¶¯
+        
+    }
+
+    private void Update()
+    {
+        if (transform.position.x >= 30)
+        {
+            speed = 0f;
+        }
     }
 }
