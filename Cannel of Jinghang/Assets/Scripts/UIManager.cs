@@ -211,20 +211,52 @@ public class UIManager : MonoBehaviour
         CollectionUI.transform.Find("Panel").gameObject.SetActive(false);
     }
 
+    public void Collect1Return()
+    {
+        GameObject CollectionUI = GameObject.Find("CollectionUI");
+        CollectionUI.transform.Find("Panel").gameObject.SetActive(true);
+        GameObject Details = GameObject.Find("Details");
+        Details.transform.Find("Details1").gameObject.SetActive(false);
+    }
+
+    public void Collect2Return()
+    {
+        GameObject CollectionUI = GameObject.Find("CollectionUI");
+        CollectionUI.transform.Find("Panel").gameObject.SetActive(true);
+        GameObject Details = GameObject.Find("Details");
+        Details.transform.Find("Details2").gameObject.SetActive(false);
+    }
+
+    public void Collect3Return()
+    {
+        GameObject CollectionUI = GameObject.Find("CollectionUI");
+        CollectionUI.transform.Find("Panel").gameObject.SetActive(true);
+        GameObject Details = GameObject.Find("Details");
+        Details.transform.Find("Details3").gameObject.SetActive(false);
+    }
 
     public void DetailsOfOne()
     {
-
+        GameObject CollectionUI = GameObject.Find("CollectionUI");
+        CollectionUI.transform.Find("Panel").gameObject.SetActive(false);
+        GameObject Details = GameObject.Find("Details");
+        Details.transform.Find("Details1").gameObject.SetActive(true);
     }
 
     public void DetailsOfTwo()
     {
-
+        GameObject CollectionUI = GameObject.Find("CollectionUI");
+        CollectionUI.transform.Find("Panel").gameObject.SetActive(false);
+        GameObject Details = GameObject.Find("Details");
+        Details.transform.Find("Details2").gameObject.SetActive(true);
     }
 
     public void DetailsOfThree()
     {
-
+        GameObject CollectionUI = GameObject.Find("CollectionUI");
+        CollectionUI.transform.Find("Panel").gameObject.SetActive(false);
+        GameObject Details = GameObject.Find("Details");
+        Details.transform.Find("Details3").gameObject.SetActive(true);
     }
 
     public void NextLevel1()
