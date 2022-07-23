@@ -44,7 +44,7 @@ GameObject:
   - component: {fileID: 4135773808611709360}
   - component: {fileID: 4135773808611709361}
   - component: {fileID: 4135773808611709362}
-  - component: {fileID: 4135773808611709363}
+  - component: {fileID: 994659470135650244}
   m_Layer: 0
   m_Name: Trigger
   m_TagString: Untagged
@@ -128,7 +128,7 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &4135773808611709363
+--- !u!114 &994659470135650244
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -137,7 +137,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 4135773808611709357}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6574d21a2da7cf74593674a4a0b5a04a, type: 3}
+  m_Script: {fileID: 11500000, guid: 9fcf34eeab3cd6b41bec8858bff2d93b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   Boat: {fileID: 6846862497313151844}
@@ -202,6 +202,14 @@ PrefabInstance:
       propertyPath: m_TagString
       value: Barrier
       objectReference: {fileID: 0}
+    - target: {fileID: 7379317158980544103, guid: 05a3ed27adaf48240bf3c16581c74090, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.6540618
+      objectReference: {fileID: 0}
+    - target: {fileID: 7379317158980544103, guid: 05a3ed27adaf48240bf3c16581c74090, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.75895
+      objectReference: {fileID: 0}
     - target: {fileID: 7379612430245486469, guid: 05a3ed27adaf48240bf3c16581c74090, type: 3}
       propertyPath: m_LocalScale.x
       value: 0.74103
@@ -250,7 +258,8 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 6671236761344379915, guid: 05a3ed27adaf48240bf3c16581c74090, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 05a3ed27adaf48240bf3c16581c74090, type: 3}
 --- !u!1 &6846862497313151844 stripped
 GameObject:
