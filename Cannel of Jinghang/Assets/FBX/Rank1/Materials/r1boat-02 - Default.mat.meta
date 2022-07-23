@@ -1,8 +1,15 @@
 fileFormatVersion: 2
+<<<<<<<< HEAD:Cannel of Jinghang/Assets/FBX/Rank1/Materials/r1boat-02 - Default.mat.meta
 guid: 5837e2f3da8fd84498efddb0ef9b703a
 NativeFormatImporter:
   externalObjects: {}
   mainObjectFileID: 2100000
+========
+guid: 3d4be9767454d0f4397a86f423d8ee74
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 7400000
+>>>>>>>> YLQ-branch:Cannel of Jinghang/Assets/Animation/waterGrass1.anim.meta
   userData: 
   assetBundleName: 
   assetBundleVariant: 

@@ -6,8 +6,6 @@ TagManager:
   tags:
   - Boat
   - Coin
-  - Magnet
-  - Shield
   - Barrier
   - RiverBank
   - Speed
@@ -15,6 +13,7 @@ TagManager:
   - Collection1
   - Collection2
   - Collection3
+  - npcboat
   layers:
   - Default
   - TransparentFX
