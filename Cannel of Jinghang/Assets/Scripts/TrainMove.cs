@@ -9,13 +9,13 @@ public class TrainMove : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
-        transform.Translate(speed * Time.fixedDeltaTime, 0, 0);//ÏòÇ°ÒÆ¶¯
+        transform.Translate(-speed * Time.fixedDeltaTime, 0, 0);
         
     }
 
     private void Update()
     {
-        if (transform.position.x >= 30)
+        if (transform.position.x <= -100)
         {
             speed = 0f;
         }

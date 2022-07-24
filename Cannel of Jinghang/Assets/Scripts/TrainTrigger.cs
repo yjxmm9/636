@@ -10,7 +10,7 @@ public class TrainTrigger : MonoBehaviour
     {
         if(other.tag == "Player")
         {
-            Train.GetComponent<TrainMove>().speed = 8;
+            Train.GetComponent<TrainMove>().speed = -16f;
         }
     }
 
