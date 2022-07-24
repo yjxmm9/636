@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BoatTrigger : MonoBehaviour
+public class BoatTriggerRank2 : MonoBehaviour
 {
     public GameObject Boat;
 
