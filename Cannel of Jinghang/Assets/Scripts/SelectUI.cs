@@ -12,7 +12,7 @@ public class SelectUI : MonoBehaviour
         {
             lock2.SetActive(false);
         }
-        else if(PlayerPrefs.GetInt("r2success", 0) == 1)
+        if(PlayerPrefs.GetInt("r2success", 0) == 1)
         {
             lock3.SetActive(false);
         }
