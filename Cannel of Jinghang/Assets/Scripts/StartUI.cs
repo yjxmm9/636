@@ -256,5 +256,148 @@ public class StartUI : MonoBehaviour
             noCollect2_3.SetActive(true);
         }
     }
+    public void Collect1_1Return()
+    {
+        GameObject CollectionUI = GameObject.Find("CollectionOneUI");
+        CollectionUI.transform.Find("Panel").gameObject.SetActive(true);
+        GameObject Details = GameObject.Find("Details");
+        Details.transform.Find("Details1_1").gameObject.SetActive(false);
+    }
+
+    public void Collect1_2Return()
+    {
+        GameObject CollectionUI = GameObject.Find("CollectionOneUI");
+        CollectionUI.transform.Find("Panel").gameObject.SetActive(true);
+        GameObject Details = GameObject.Find("Details");
+        Details.transform.Find("Details1_2").gameObject.SetActive(false);
+    }
+
+    public void Collect1_3Return()
+    {
+        GameObject CollectionUI = GameObject.Find("CollectionOneUI");
+        CollectionUI.transform.Find("Panel").gameObject.SetActive(true);
+        GameObject Details = GameObject.Find("Details");
+        Details.transform.Find("Details1_3").gameObject.SetActive(false);
+    }
+
+    public void DetailsOf1One()
+    {
+        GameObject CollectionUI = GameObject.Find("CollectionOneUI");
+        CollectionUI.transform.Find("Panel").gameObject.SetActive(false);
+        GameObject Details = GameObject.Find("Details");
+        Details.transform.Find("Details1_1").gameObject.SetActive(true);
+    }
+
+    public void DetailsOf1Two()
+    {
+        GameObject CollectionUI = GameObject.Find("CollectionOneUI");
+        CollectionUI.transform.Find("Panel").gameObject.SetActive(false);
+        GameObject Details = GameObject.Find("Details");
+        Details.transform.Find("Details1_2").gameObject.SetActive(true);
+    }
+
+    public void DetailsOf1Three()
+    {
+        GameObject CollectionUI = GameObject.Find("CollectionOneUI");
+        CollectionUI.transform.Find("Panel").gameObject.SetActive(false);
+        GameObject Details = GameObject.Find("Details");
+        Details.transform.Find("Details1_3").gameObject.SetActive(true);
+    }
+
+    public void Collect2_1Return()
+    {
+        GameObject CollectionUI = GameObject.Find("CollectionTwoUI");
+        CollectionUI.transform.Find("Panel").gameObject.SetActive(true);
+        GameObject Details = GameObject.Find("Details");
+        Details.transform.Find("Details2_1").gameObject.SetActive(false);
+    }
+
+    public void Collect2_2Return()
+    {
+        GameObject CollectionUI = GameObject.Find("CollectionTwoUI");
+        CollectionUI.transform.Find("Panel").gameObject.SetActive(true);
+        GameObject Details = GameObject.Find("Details");
+        Details.transform.Find("Details2_2").gameObject.SetActive(false);
+    }
+
+    public void Collect2_3Return()
+    {
+        GameObject CollectionUI = GameObject.Find("CollectionTwoUI");
+        CollectionUI.transform.Find("Panel").gameObject.SetActive(true);
+        GameObject Details = GameObject.Find("Details");
+        Details.transform.Find("Details2_3").gameObject.SetActive(false);
+    }
+
+    public void DetailsOf2One()
+    {
+        GameObject CollectionUI = GameObject.Find("CollectionTwoUI");
+        CollectionUI.transform.Find("Panel").gameObject.SetActive(false);
+        GameObject Details = GameObject.Find("Details");
+        Details.transform.Find("Details2_1").gameObject.SetActive(true);
+    }
+
+    public void DetailsOf2Two()
+    {
+        GameObject CollectionUI = GameObject.Find("CollectionTwoUI");
+        CollectionUI.transform.Find("Panel").gameObject.SetActive(false);
+        GameObject Details = GameObject.Find("Details");
+        Details.transform.Find("Details2_2").gameObject.SetActive(true);
+    }
+
+    public void DetailsOf2Three()
+    {
+        GameObject CollectionUI = GameObject.Find("CollectionTwoUI");
+        CollectionUI.transform.Find("Panel").gameObject.SetActive(false);
+        GameObject Details = GameObject.Find("Details");
+        Details.transform.Find("Details2_3").gameObject.SetActive(true);
+    }
+
+    public void Collect3_1Return()
+    {
+        GameObject CollectionUI = GameObject.Find("CollectionThreeUI");
+        CollectionUI.transform.Find("Panel").gameObject.SetActive(true);
+        GameObject Details = GameObject.Find("Details");
+        Details.transform.Find("Details3_1").gameObject.SetActive(false);
+    }
+
+    public void Collect3_2Return()
+    {
+        GameObject CollectionUI = GameObject.Find("CollectionThreeUI");
+        CollectionUI.transform.Find("Panel").gameObject.SetActive(true);
+        GameObject Details = GameObject.Find("Details");
+        Details.transform.Find("Details3_2").gameObject.SetActive(false);
+    }
+
+    public void Collect3_3Return()
+    {
+        GameObject CollectionUI = GameObject.Find("CollectionThreeUI");
+        CollectionUI.transform.Find("Panel").gameObject.SetActive(true);
+        GameObject Details = GameObject.Find("Details");
+        Details.transform.Find("Details3_3").gameObject.SetActive(false);
+    }
+
+    public void DetailsOf3One()
+    {
+        GameObject CollectionUI = GameObject.Find("CollectionThreeUI");
+        CollectionUI.transform.Find("Panel").gameObject.SetActive(false);
+        GameObject Details = GameObject.Find("Details");
+        Details.transform.Find("Details3_1").gameObject.SetActive(true);
+    }
+
+    public void DetailsOf3Two()
+    {
+        GameObject CollectionUI = GameObject.Find("CollectionThreeUI");
+        CollectionUI.transform.Find("Panel").gameObject.SetActive(false);
+        GameObject Details = GameObject.Find("Details");
+        Details.transform.Find("Details3_2").gameObject.SetActive(true);
+    }
+
+    public void DetailsOf3Three()
+    {
+        GameObject CollectionUI = GameObject.Find("CollectionThreeUI");
+        CollectionUI.transform.Find("Panel").gameObject.SetActive(false);
+        GameObject Details = GameObject.Find("Details");
+        Details.transform.Find("Details3_3").gameObject.SetActive(true);
+    }
 
 }

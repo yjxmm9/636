@@ -26,6 +26,8 @@ public class UIManager : MonoBehaviour
     public GameObject noCollect2;
     public GameObject noCollect3;
     public GameObject CollectionUI;
+    public Image Pauseimage;
+    public Sprite[] pauseSprites;
 
     static Vector3 newposition;
     private float speed;
@@ -84,6 +86,7 @@ public class UIManager : MonoBehaviour
     public void Pause()//暂停按钮
     {
         Time.timeScale = 0;
+        Pauseimage.sprite = pauseSprites[1];
         PauseUI.SetActive(true); 
         speed = TestBoat.GetComponent<TestBoatController>().speed;//获取现在的船速度
         TestBoat.GetComponent<TestBoatController>().speed = 0;//将船速设为=0，即达到暂停而timescale不为0
@@ -93,6 +96,7 @@ public class UIManager : MonoBehaviour
     public void Continue()//继续按钮
     {
         PauseUI.SetActive(false);
+        Pauseimage.sprite = pauseSprites[0];
         StartCoroutine(CountUI.GetComponent<CountDown>().CountDownIE());
         Player.GetComponent<PlayerController>().boatAudioSource.Play();
 
