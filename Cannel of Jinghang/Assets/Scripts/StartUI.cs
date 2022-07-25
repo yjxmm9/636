@@ -28,6 +28,7 @@ public class StartUI : MonoBehaviour
     public GameObject noCollect3_1;
     public GameObject noCollect3_2;
     public GameObject noCollect3_3;
+    public GameObject BG;
 
     void Start()
     {
@@ -65,6 +66,7 @@ public class StartUI : MonoBehaviour
     public void Collect()
     {
         CollectionUI.transform.Find("Panel").gameObject.SetActive(true);//打开收集品UI的第一页
+        BG.SetActive(true);
         MainMenu.SetActive(false);//关闭MainMene
         if (PlayerPrefs.GetInt("haveCollect1_1",0) == 1)
         {
@@ -178,6 +180,7 @@ public class StartUI : MonoBehaviour
     {
         GameObject CollectionUI = GameObject.Find("CollectionOneUI");
         CollectionUI.transform.Find("Panel").gameObject.SetActive(false);//关闭收集品UI的第一页
+        BG.SetActive(false);
         MainMenu.SetActive(true);//打开MainMene
     }
 
@@ -315,7 +318,6 @@ public class StartUI : MonoBehaviour
     public void Collect2_2Return()
     {
         GameObject CollectionUI = GameObject.Find("CollectionTwoUI");
-        CollectionUI.transform.Find("Panel").gameObject.SetActive(true);
         GameObject Details = GameObject.Find("Details");
         Details.transform.Find("Details2_2").gameObject.SetActive(false);
     }
