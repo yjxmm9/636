@@ -9,7 +9,7 @@ public class UIManager : MonoBehaviour
     private static UIManager _instance;
 
     public Text ScoreText;
-    public int score=0;
+    public int score;
     public GameObject AnswerUI;
     public GameObject TestBoat;
     public GameObject Player;
@@ -43,8 +43,6 @@ public class UIManager : MonoBehaviour
     private void Awake()
     {
         _instance = this;
-        DontDestroyOnLoad(Forever);
-        
     }
 
     public void UpdateUI(int s)//游戏中得分刷新功能

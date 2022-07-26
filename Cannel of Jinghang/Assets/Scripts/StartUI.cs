@@ -35,6 +35,7 @@ public class StartUI : MonoBehaviour
         
         SettingUI.SetActive(false);//将其初始化设置为不显示
         PlayUI.SetActive(false);
+        Time.timeScale = 1;
     }
 
     public void StartGame()

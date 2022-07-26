@@ -44,18 +44,20 @@ public class PlayerController : MonoBehaviour
 
     private void Awake()
     {
-        if (GameObject.Find("Forever").GetComponent<Forever>().isrevivedplayer)//复活以后读取复活前的参数
-        {
-            transform.position = GameObject.Find("Forever").GetComponent<Forever>().newpositionplayer;
-            UIManager.Instance.score= GameObject.Find("Forever").GetComponent<Forever>().lastScore;
-            WinUI.collectionCount = GameObject.Find("Forever").GetComponent<Forever>().collectNum;
-            GameObject.Find("Forever").GetComponent<Forever>().isrevivedplayer = false;
-        }
+        
     }
 
 
     void Start()
     {
+        if (GameObject.Find("Forever").GetComponent<Forever>().isrevivedplayer)//复活以后读取复活前的参数
+        {
+            transform.position = GameObject.Find("Forever").GetComponent<Forever>().newpositionplayer;
+            UIManager.Instance.score = GameObject.Find("Forever").GetComponent<Forever>().lastScore;
+            Debug.Log(UIManager.Instance.score);
+            WinUI.collectionCount = GameObject.Find("Forever").GetComponent<Forever>().collectNum;
+            GameObject.Find("Forever").GetComponent<Forever>().isrevivedplayer = false;
+        }
         rb = this.GetComponent<Rigidbody>();
         pa = this.GetComponent<Animator>();
         jump = new Vector3(0.0f, 1f, 0.0f);
@@ -201,6 +203,7 @@ public class PlayerController : MonoBehaviour
         transform.Translate(horizontal * speed * Time.fixedDeltaTime, 0, speed * Time.fixedDeltaTime);//向前移动
         Rotating(horizontal);//转向方法
         Score();
+        Debug.Log(UIManager.Instance.score);
 
 
     }
