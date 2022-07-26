@@ -38,7 +38,7 @@ public class AlwaysPlay : MonoBehaviour
     public void OnSlideChange()
     {
         PlayerPrefs.SetFloat("AudioVolume", audioVolume.value);
-        mainmenuAudio.volume = PlayerPrefs.GetFloat("AudioVolume", 1f);
+        mainmenuAudio.volume = PlayerPrefs.GetFloat("AudioVolume", 0.274f);
 
     }
 }
