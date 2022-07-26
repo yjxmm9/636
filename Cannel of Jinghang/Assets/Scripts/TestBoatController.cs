@@ -91,7 +91,6 @@ public class TestBoatController : MonoBehaviour
                 GameObject.Find("Forever").GetComponent<Forever>().isrevivedbutton = false;
             }
              PlaySound(DefeatSound);
-            Debug.Log(other.name);
         }
     }
     public void PlaySound(AudioClip audioClip)//≤•∑≈“Ù∆µ
