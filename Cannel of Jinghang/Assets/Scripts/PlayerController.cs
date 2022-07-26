@@ -130,7 +130,6 @@ public class PlayerController : MonoBehaviour
                 GameObject.Find("Forever").GetComponent<Forever>().isrevivedbutton = false;
             }
             PlaySound(DefeatSound);
-            Debug.Log(other.name);
 
         }
         //撞到收集品
